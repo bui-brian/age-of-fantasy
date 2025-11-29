@@ -8,7 +8,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 func _on_area_entered(area: Area2D) -> void:
-	if not area.has_method("receive_hit"):
+	if not area.has_method("receive_hit") or not attacker_stats:
 		return
 	
 	area.receive_hit(attacker_stats.base_damage)
