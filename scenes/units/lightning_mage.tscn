@@ -1,24 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2i75voiued42"]
+[gd_scene load_steps=15 format=3 uid="uid://c2i75voiued42"]
 
 [ext_resource type="Script" uid="uid://bca0gaa3mcr70" path="res://scripts/lightning_mage.gd" id="1_ci418"]
 [ext_resource type="Texture2D" uid="uid://dqbhbphd31apl" path="res://assets/units/Lightning Mage/Attack_1.png" id="2_141cb"]
-[ext_resource type="Script" uid="uid://dhh3p2vevnree" path="res://scripts/stats.gd" id="2_dqc3w"]
 [ext_resource type="Texture2D" uid="uid://bd0byamee3ifh" path="res://assets/units/Lightning Mage/Run.png" id="3_3n5ed"]
 [ext_resource type="Texture2D" uid="uid://bgamkb4qrrafx" path="res://assets/units/Lightning Mage/Idle.png" id="5_dqc3w"]
 [ext_resource type="PackedScene" uid="uid://6hjv23dhua0r" path="res://scenes/components/hitbox.tscn" id="7_dqc3w"]
 [ext_resource type="PackedScene" uid="uid://ccold6nd2hi6x" path="res://scenes/components/hurtbox.tscn" id="10_cac0x"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipw3k"]
-size = Vector2(50, 20)
-
-[sub_resource type="Resource" id="Resource_v06vr"]
-script = ExtResource("2_dqc3w")
-base_max_health = 100
-base_defense = 10
-base_attack = 10
-experience = 0
-base_damage = 20
-metadata/_custom_type_script = "uid://dhh3p2vevnree"
 
 [sub_resource type="Animation" id="Animation_dqc3w"]
 resource_name = "attack1"
@@ -224,8 +211,6 @@ size = Vector2(49, 66)
 
 [node name="Lightning Mage" type="CharacterBody2D"]
 script = ExtResource("1_ci418")
-hitbox_shape = SubResource("RectangleShape2D_ipw3k")
-stats = SubResource("Resource_v06vr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -255,5 +240,5 @@ position = Vector2(45, 25)
 scale = Vector2(2.5, 1.5)
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_gog5y")

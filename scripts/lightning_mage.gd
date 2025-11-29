@@ -4,11 +4,12 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Hitbox = $Hitbox
 
-@export var hitbox_shape: Shape2D
-@export var stats: Stats
-
+var stats: Stats = Stats.new()
 var speed := 50.0
 var direction := 0
+
+func _ready():
+	stats.base_damage = 20
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
