@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var hitbox: Hitbox = $Hitbox
 
 var stats: Stats = Stats.new()
-var speed := 50.0
 var direction := 0
 
 func _ready():
@@ -18,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	
 	raycast_detection()
 	
-	velocity.x = direction * speed
+	velocity.x = direction * stats.speed
 	move_and_slide()
 
 func raycast_detection():
@@ -26,15 +25,13 @@ func raycast_detection():
 		var unit_check = ray_cast_forward.get_collider()
 		if !unit_check:
 			return
-		elif unit_check.is_in_group("enemy"):
-			speed = 0
+		if unit_check.is_in_group("enemy"):
+			stats.speed = 0
 			animation_player.set_current_animation("attack1")
 			hitbox.attacker_stats = stats
-		elif unit_check.is_in_group("player") and unit_check.speed <= 0:
-			# if unit in front of them has speed = 0
-			# then stop animation/play idle animation and set speed = 0
-			speed = 0
+		elif unit_check.is_in_group("player") and unit_check.stats.speed <= 0:
+			stats.speed = 0
 			animation_player.set_current_animation("idle")
 	else:
-		speed = 50
+		stats.speed = 50
 		animation_player.set_current_animation("run")
