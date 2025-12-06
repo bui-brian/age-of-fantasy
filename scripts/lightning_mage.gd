@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var ray_cast_forward: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Hitbox = $Hitbox
+@onready var health_bar: ProgressBar = $HealthBar
 
 var stats: Stats = Stats.new()
 var direction := 0
