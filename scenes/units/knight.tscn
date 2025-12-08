@@ -284,3 +284,7 @@ scale = Vector2(2, 3.5)
 shape = SubResource("RectangleShape2D_5f6yi")
 
 [node name="HealthBar" parent="." instance=ExtResource("8_gk0fs")]
+offset_left = -26.0
+offset_top = -49.0
+offset_right = 26.0
+offset_bottom = -39.0

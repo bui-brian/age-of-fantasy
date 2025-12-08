@@ -245,7 +245,7 @@ monitoring = false
 shape = SubResource("RectangleShape2D_gog5y")
 
 [node name="HealthBar" parent="." instance=ExtResource("7_wfxun")]
-offset_left = -28.0
-offset_top = -33.0
-offset_right = 18.0
-offset_bottom = -18.0
+offset_left = -31.0
+offset_top = -24.0
+offset_right = 21.0
+offset_bottom = -14.0
