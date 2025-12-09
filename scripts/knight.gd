@@ -10,6 +10,13 @@ var direction := 0
 
 func _ready():
 	stats.base_damage = 20
+	set_fill_mode.call_deferred()
+
+func set_fill_mode() -> void:
+	if direction >= 0:
+		health_bar.fill_mode = ProgressBar.FILL_BEGIN_TO_END
+	elif direction < 0:
+		health_bar.fill_mode = ProgressBar.FILL_END_TO_BEGIN
 
 func _process(delta):
 	pass
