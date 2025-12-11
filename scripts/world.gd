@@ -16,9 +16,9 @@ func _ready():
 # --- Button handlers ---
 func _on_unit_1_button_pressed() -> void:
 	var lm_scene = preload(lm_scene_path).instantiate()
-	var player_unit = player_spawner.spawn_unit(lm_scene,"player", Vector2.RIGHT, Vector2(200, 400))
+	var player_unit = player_spawner.spawn_unit(lm_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(200, 400))
 	player_units.add_child(player_unit)
 	
 	var knight_scene = preload(knight_scene_path).instantiate()
-	var enemy_unit = enemy_spawner.spawn_unit(knight_scene, "enemy", Vector2.LEFT, Vector2(1000, 400))
+	var enemy_unit = enemy_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(1000, 400))
 	enemy_units.add_child(enemy_unit)
