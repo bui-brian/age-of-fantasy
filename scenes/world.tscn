@@ -360,7 +360,6 @@ texture = ExtResource("5_i7141")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(625, -89)
-zoom = Vector2(2, 2)
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("8_w7kh3")]
 

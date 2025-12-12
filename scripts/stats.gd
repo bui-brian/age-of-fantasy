@@ -1,10 +1,5 @@
 class_name Stats extends Resource
 
-enum Faction {
-	PLAYER,
-	ENEMY,
-}
-
 const BASE_LEVEL_XP: float = 100.0
 
 signal health_depleted
@@ -23,6 +18,7 @@ var current_defense: int = 10
 var current_attack: int = 10
 
 var health: int = 0: set = _on_health_set
+var speed : float = 50.0
 
 func _init() -> void:
 	setup_stats.call_deferred()
