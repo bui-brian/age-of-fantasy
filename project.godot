@@ -12,12 +12,12 @@ config_version=5
 
 config/name="Age of Fantasy"
 run/main_scene="uid://c5qw442h2j58x"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [rendering]
 
