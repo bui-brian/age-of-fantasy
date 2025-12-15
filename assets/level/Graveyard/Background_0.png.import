@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://carkpdhkkcrml"
-path="res://.godot/imported/Background_1.png-dd7b87a531e6b35aae46977a10278187.ctex"
+uid="uid://bc6ix7ps5b0kr"
+path="res://.godot/imported/Background_0.png-e687eeff28887cf184a1454e44719703.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Graveyard/Background_1.png"
-dest_files=["res://.godot/imported/Background_1.png-dd7b87a531e6b35aae46977a10278187.ctex"]
+source_file="res://assets/level/Graveyard/Background_0.png"
+dest_files=["res://.godot/imported/Background_0.png-e687eeff28887cf184a1454e44719703.ctex"]
 
 [params]
 

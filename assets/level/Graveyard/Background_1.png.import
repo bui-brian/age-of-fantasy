@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lwaycad3ywtt"
-path="res://.godot/imported/Salt.png-e971cf8404bc61c4e6f75f5c839160c7.ctex"
+uid="uid://carkpdhkkcrml"
+path="res://.godot/imported/Background_1.png-b11a6c7e4e3f99be3918b260fc305950.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Graveyard/Salt.png"
-dest_files=["res://.godot/imported/Salt.png-e971cf8404bc61c4e6f75f5c839160c7.ctex"]
+source_file="res://assets/level/Graveyard/Background_1.png"
+dest_files=["res://.godot/imported/Background_1.png-b11a6c7e4e3f99be3918b260fc305950.ctex"]
 
 [params]
 
