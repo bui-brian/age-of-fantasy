@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://105whre05ce4"
-path="res://.godot/imported/brush.png-4a0dc87fff312d6368c8498a030f0720.ctex"
+uid="uid://bmpbkwlwu2puw"
+path="res://.godot/imported/closed-door.png-f679fdc32072f03c02b67b51ee29b4ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Graveyard/brush.png"
-dest_files=["res://.godot/imported/brush.png-4a0dc87fff312d6368c8498a030f0720.ctex"]
+source_file="res://assets/level/Fort of Illusion Files/Layers/Props/closed-door.png"
+dest_files=["res://.godot/imported/closed-door.png-f679fdc32072f03c02b67b51ee29b4ac.ctex"]
 
 [params]
 

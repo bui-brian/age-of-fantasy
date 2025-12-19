@@ -14,6 +14,10 @@ config/name="Age of Fantasy"
 run/main_scene="uid://c5qw442h2j58x"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="res://tres/default_bus_layout.tres"
+
 [display]
 
 window/size/viewport_width=1280

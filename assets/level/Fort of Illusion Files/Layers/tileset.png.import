@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc6ix7ps5b0kr"
-path="res://.godot/imported/Background_0.png-852a0fd6b8ee8414265de2b23f0c7c48.ctex"
+uid="uid://bb2711kwwk1rt"
+path="res://.godot/imported/tileset.png-40a3927894ff60f6fd938054c1ecb1d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Graveyard/Background_0.png"
-dest_files=["res://.godot/imported/Background_0.png-852a0fd6b8ee8414265de2b23f0c7c48.ctex"]
+source_file="res://assets/level/Fort of Illusion Files/Layers/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-40a3927894ff60f6fd938054c1ecb1d7.ctex"]
 
 [params]
 

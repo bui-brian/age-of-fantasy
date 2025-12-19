@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lwaycad3ywtt"
-path="res://.godot/imported/Salt.png-e971cf8404bc61c4e6f75f5c839160c7.ctex"
+uid="uid://xku8dlmrrfgy"
+path="res://.godot/imported/Fort-of-Illusion.png-1b1ab60bed88d2b339d611e85acdea76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Graveyard/Salt.png"
-dest_files=["res://.godot/imported/Salt.png-e971cf8404bc61c4e6f75f5c839160c7.ctex"]
+source_file="res://assets/level/Fort of Illusion Files/Previews/Fort-of-Illusion.png"
+dest_files=["res://.godot/imported/Fort-of-Illusion.png-1b1ab60bed88d2b339d611e85acdea76.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c51fa7e4y5ua1"
-path="res://.godot/imported/Background_0.png-c048c13b439290d6be4a93d5036dabb7.ctex"
+uid="uid://dgbv6gsqqn37i"
+path="res://.godot/imported/front.png-7b6fd287bbfa433ba7b3767c25d9c18d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/Background_0.png"
-dest_files=["res://.godot/imported/Background_0.png-c048c13b439290d6be4a93d5036dabb7.ctex"]
+source_file="res://assets/level/Fort of Illusion Files/Layers/front.png"
+dest_files=["res://.godot/imported/front.png-7b6fd287bbfa433ba7b3767c25d9c18d.ctex"]
 
 [params]
 
