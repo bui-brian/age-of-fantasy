@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bq85vhmgmmlgn"]
 
-[ext_resource type="Theme" uid="uid://hi6l0qc634ts" path="res://themes/default_health.tres" id="1_cmd0n"]
+[ext_resource type="Theme" uid="uid://hi6l0qc634ts" path="res://tres/default_health.tres" id="1_cmd0n"]
 [ext_resource type="Script" uid="uid://dfhvffbffrngn" path="res://scripts/health_bar.gd" id="2_b05m6"]
 
 [node name="HealthBar" type="ProgressBar"]
