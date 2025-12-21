@@ -430,3 +430,4 @@ offset_right = 21.0
 offset_bottom = -14.0
 
 [node name="Attack2SFX" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

@@ -15,8 +15,6 @@ var stats : Stats = Stats.new()
 var direction := 0 # 1 = right, -1 = left
 
 func _ready():
-	# placeholder: initialize stats when needed
-	stats.base_damage = 20
 	set_fill_mode.call_deferred()
 
 func _process(delta):
