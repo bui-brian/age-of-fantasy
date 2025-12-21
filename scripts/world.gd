@@ -5,7 +5,7 @@ extends Node2D
 @onready var player_spawner: UnitSpawner = $PlayerSpawner
 @onready var enemy_spawner: UnitSpawner = $EnemySpawner
 
-const lm_scene_path = "res://scenes/units/lightning_mage.tscn"
+const lm_scene_path = "res://scenes/units/lightning_sorc.tscn"
 const knight_scene_path = "res://scenes/units/knight.tscn"
 
 # --- Button handlers ---
