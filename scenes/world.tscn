@@ -946,7 +946,7 @@ position = Vector2(-600, 65)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_munwf")
 autoplay = "default"
-frame_progress = 0.5018068
+frame_progress = 0.33900183
 
 [node name="PlayerTowerBot" type="AnimatedSprite2D" parent="ElvenLevel"]
 position = Vector2(-500, 215)

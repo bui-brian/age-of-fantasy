@@ -20,13 +20,13 @@ func _on_unit_1_button_pressed() -> void:
 	var knight_scene3 = preload(knight_scene_path).instantiate()
 
 	# Configure units and construct unit spawners
-	var player_spawn_mid = player_spawner.spawn_unit(lm_scene1, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-900, 50))
-	var player_spawn_top = player_spawner.spawn_unit(lm_scene2, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-900, -100))
-	var player_spawn_bot = player_spawner.spawn_unit(lm_scene3, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-900, 250))
+	var player_spawn_mid = player_spawner.spawn_unit(lm_scene1, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50))
+	var player_spawn_top = player_spawner.spawn_unit(lm_scene2, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -100))
+	var player_spawn_bot = player_spawner.spawn_unit(lm_scene3, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250))
 	
-	var enemy_spawn_mid = enemy_spawner.spawn_unit(knight_scene1, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(900, 75))
-	var enemy_spawn_top = enemy_spawner.spawn_unit(knight_scene2, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(900, -100))
-	var enemy_spawn_bot = enemy_spawner.spawn_unit(knight_scene3, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(900, 250))
+	var enemy_spawn_mid = enemy_spawner.spawn_unit(knight_scene1, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 75))
+	var enemy_spawn_top = enemy_spawner.spawn_unit(knight_scene2, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100))
+	var enemy_spawn_bot = enemy_spawner.spawn_unit(knight_scene3, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250))
 
 	# Add units to the main scene
 	player_units.add_child(player_spawn_mid)

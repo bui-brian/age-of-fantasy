@@ -10,6 +10,6 @@ func spawn_unit(unit_scene, unit_group: Unit.Faction, unit_direction: Vector2, u
 	temp_scene.direction = unit_direction.x
 	temp_scene.scale.x = unit_direction.x
 	temp_scene.global_position = unit_position
-	temp_scene.scale *= Vector2(1.25, 1.25)
+	temp_scene.scale *= Vector2(1, 1)
 	
 	return temp_scene
