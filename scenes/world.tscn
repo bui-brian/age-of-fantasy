@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=35 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bs2nj2v4yclrv" path="res://assets/level/Fort of Illusion Files/Layers/Props/window.png" id="16_2lf6f"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://ddeyiiigp44ep" path="res://assets/level/Mage_Towers_Pixel_Art_for_Tower_Defense/2 Idle/7.png" id="18_7iits"]
+[ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_rwgxs")
@@ -935,6 +936,11 @@ position = Vector2(73, -88)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("16_2lf6f")
 
+[node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_q5onr")
+autoplay = true
+bus = &"Music"
+
 [node name="ElvenLevel" type="Node2D" parent="."]
 
 [node name="ElvenBattleground" type="Sprite2D" parent="ElvenLevel"]
@@ -946,7 +952,7 @@ position = Vector2(-600, 65)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_munwf")
 autoplay = "default"
-frame_progress = 0.33900183
+frame_progress = 0.5475583
 
 [node name="PlayerTowerBot" type="AnimatedSprite2D" parent="ElvenLevel"]
 position = Vector2(-500, 215)
@@ -1014,6 +1020,7 @@ shape = SubResource("RectangleShape2D_oo54l")
 follow_viewport_enabled = true
 
 [node name="TopBar" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -545.0
@@ -1030,16 +1037,41 @@ color = Color(0.221302, 0.221302, 0.221302, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/TopBar"]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 35.0
-offset_right = 1049.0
-offset_bottom = 119.0
+offset_left = -200.0
+offset_top = -600.0
+offset_right = 155.0
+offset_bottom = -515.0
+rotation = 1.5707964
+scale = Vector2(2, 2)
 
-[node name="Unit1_Button" type="TextureButton" parent="UI/TopBar/HBoxContainer"]
+[node name="SideBar" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -800.0
+offset_top = -150.0
+offset_right = -800.0
+offset_bottom = -150.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/SideBar"]
+layout_mode = 1
+offset_right = 294.0
+offset_bottom = 80.0
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("20_7iits")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SideBar"]
+layout_mode = 0
+offset_left = -142.0
+offset_top = 26.0
+offset_right = -17.0
+offset_bottom = 565.0
+
+[node name="Unit1_Button" type="TextureButton" parent="UI/SideBar/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_4wyf3")
 
-[node name="Label" type="Label" parent="UI/TopBar/HBoxContainer/Unit1_Button"]
+[node name="Label" type="Label" parent="UI/SideBar/VBoxContainer/Unit1_Button"]
 layout_mode = 0
 offset_top = 34.0
 offset_right = 40.0
@@ -1048,9 +1080,4 @@ text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_q5onr")
-autoplay = true
-bus = &"Music"
-
-[connection signal="pressed" from="UI/TopBar/HBoxContainer/Unit1_Button" to="." method="_on_unit_1_button_pressed"]
+[connection signal="pressed" from="UI/SideBar/VBoxContainer/Unit1_Button" to="." method="_on_unit_1_button_pressed"]
