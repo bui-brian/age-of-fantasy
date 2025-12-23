@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=38 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://ddeyiiigp44ep" path="res://assets/level/Mage_Towers_Pixel_Art_for_Tower_Defense/2 Idle/7.png" id="18_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
+[ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
+[ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
+[ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_rwgxs")
@@ -952,7 +955,7 @@ position = Vector2(-600, 65)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_munwf")
 autoplay = "default"
-frame_progress = 0.5475583
+frame_progress = 0.02317043
 
 [node name="PlayerTowerBot" type="AnimatedSprite2D" parent="ElvenLevel"]
 position = Vector2(-500, 215)
@@ -1079,5 +1082,27 @@ offset_bottom = 57.0
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+offset_left = -686.0
+offset_top = 475.0
+offset_right = -558.0
+offset_bottom = 491.0
+scale = Vector2(3, 3)
+value = 60.0
+texture_over = ExtResource("22_kpybi")
+texture_progress = ExtResource("23_ctatt")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="UI"]
+offset_left = 312.0
+offset_top = 471.0
+offset_right = 440.0
+offset_bottom = 487.0
+scale = Vector2(3, 3)
+value = 60.0
+texture_over = ExtResource("22_kpybi")
+texture_progress = ExtResource("24_ctatt")
+texture_progress_offset = Vector2(4, 4)
 
 [connection signal="pressed" from="UI/SideBar/VBoxContainer/Unit1_Button" to="." method="_on_unit_1_button_pressed"]
