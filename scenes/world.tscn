@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=39 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://df1wvteelupjx" path="res://assets/level/Graveyard/Grass_background_1.png" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://brr5c7ikwirt0" path="res://assets/level/Graveyard/Grass_background_2.png" id="5_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://bb2711kwwk1rt" path="res://assets/level/Fort of Illusion Files/Layers/tileset.png" id="8_e3hyu"]
-[ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="8_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://bsjwmmpqfijix" path="res://assets/level/Fort of Illusion Files/Layers/mountains.png" id="8_xo05s"]
 [ext_resource type="Texture2D" uid="uid://cryxovitgivqh" path="res://assets/level/Fort of Illusion Files/Layers/back.png" id="9_7t5mc"]
 [ext_resource type="Texture2D" uid="uid://xku8dlmrrfgy" path="res://assets/level/Fort of Illusion Files/Previews/Fort-of-Illusion.png" id="9_q5onr"]
@@ -996,14 +995,6 @@ frame_progress = 0.6971427
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("8_w7kh3")]
-
-[node name="EnemySpawner" parent="." instance=ExtResource("8_w7kh3")]
-
-[node name="EnemyUnits" type="Node2D" parent="."]
-
-[node name="PlayerUnits" type="Node2D" parent="."]
-
 [node name="MiddleLane" type="StaticBody2D" parent="."]
 position = Vector2(0, 150)
 
@@ -1123,5 +1114,3 @@ offset_right = -188.0
 offset_bottom = 40.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
-
-[connection signal="pressed" from="UI/SideBar/VBoxContainer/Unit1_Button" to="." method="_on_unit_1_button_pressed"]
