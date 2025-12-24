@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=40 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
 [ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
+[ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/tower_buttons.gd" id="25_xgqkh"]
+[ext_resource type="Texture2D" uid="uid://d4elu0o7mxx4a" path="res://assets/ui/Edinnu_UI_asset_pack/Target/Target (10).png" id="26_munwf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_rwgxs")
@@ -1104,5 +1106,22 @@ value = 60.0
 texture_over = ExtResource("22_kpybi")
 texture_progress = ExtResource("24_ctatt")
 texture_progress_offset = Vector2(4, 4)
+
+[node name="TowerButtons" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 13.799988
+offset_bottom = 10.200001
+scale = Vector2(3, 3)
+script = ExtResource("25_xgqkh")
+
+[node name="PlayerTowerMidButton" type="TextureButton" parent="UI/TowerButtons"]
+layout_mode = 0
+offset_left = -208.0
+offset_top = 20.0
+offset_right = -188.0
+offset_bottom = 40.0
+texture_normal = ExtResource("26_munwf")
+texture_hover = ExtResource("26_munwf")
 
 [connection signal="pressed" from="UI/SideBar/VBoxContainer/Unit1_Button" to="." method="_on_unit_1_button_pressed"]
