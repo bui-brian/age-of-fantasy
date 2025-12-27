@@ -5,6 +5,7 @@ extends Node2D
 
 const lm_scene_path = "res://scenes/units/lightning_sorc.tscn"
 const knight_scene_path = "res://scenes/units/knight.tscn"
+const dm_scene_path = "res://scenes/units/dark_magician.tscn"
 
 var mid_toggle: bool = false
 var top_toggle: bool = false
@@ -32,7 +33,8 @@ func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool):
 # --- Button handlers ---
 func _on_unit_1_button_pressed() -> void:
 	if mid_toggle:
-		var mid_spawn = preload(lm_scene_path).instantiate()
+		#var mid_spawn = preload(lm_scene_path).instantiate()
+		var mid_spawn = preload(dm_scene_path).instantiate()
 		var player_spawn_mid = spawn_unit(mid_spawn, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50))
 		self.add_child(player_spawn_mid)
 	if top_toggle:
