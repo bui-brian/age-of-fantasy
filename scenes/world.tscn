@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=42 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
@@ -20,12 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://ddeyiiigp44ep" path="res://assets/level/Mage_Towers_Pixel_Art_for_Tower_Defense/2 Idle/7.png" id="18_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
+[ext_resource type="Script" uid="uid://vl705nfl456s" path="res://scripts/sorceress_button.gd" id="21_ts3gi"]
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
 [ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
 [ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/tower_buttons.gd" id="25_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://d4elu0o7mxx4a" path="res://assets/ui/Edinnu_UI_asset_pack/Target/Target (10).png" id="26_munwf"]
 [ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/economy_controller.tscn" id="26_ts3gi"]
+[ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="28_0nbtd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_rwgxs")
@@ -824,6 +826,128 @@ size = Vector2(2000, 20)
 [node name="World" type="Node2D"]
 script = ExtResource("1_k0juu")
 
+[node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TopBar" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -545.0
+offset_top = 359.0
+offset_right = -505.0
+offset_bottom = 399.0
+
+[node name="ColorRect" type="ColorRect" parent="UI/TopBar"]
+layout_mode = 0
+offset_left = 81.0
+offset_right = 1050.0
+offset_bottom = 122.0
+color = Color(0.221302, 0.221302, 0.221302, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -600.0
+offset_right = 155.0
+offset_bottom = -515.0
+rotation = 1.5707964
+scale = Vector2(2, 2)
+
+[node name="SideBar" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -800.0
+offset_top = -150.0
+offset_right = -800.0
+offset_bottom = -150.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/SideBar"]
+layout_mode = 1
+offset_right = 294.0
+offset_bottom = 80.0
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("20_7iits")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SideBar"]
+layout_mode = 0
+offset_left = -142.0
+offset_top = 26.0
+offset_right = -17.0
+offset_bottom = 565.0
+
+[node name="SorceressButton" type="TextureButton" parent="UI/SideBar/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_4wyf3")
+script = ExtResource("21_ts3gi")
+
+[node name="Label" type="Label" parent="UI/SideBar/VBoxContainer/SorceressButton"]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 40.0
+offset_bottom = 57.0
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+offset_left = -686.0
+offset_top = 475.0
+offset_right = -558.0
+offset_bottom = 491.0
+scale = Vector2(3, 3)
+value = 60.0
+texture_over = ExtResource("22_kpybi")
+texture_progress = ExtResource("23_ctatt")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="UI"]
+offset_left = 312.0
+offset_top = 471.0
+offset_right = 440.0
+offset_bottom = 487.0
+scale = Vector2(3, 3)
+value = 60.0
+texture_over = ExtResource("22_kpybi")
+texture_progress = ExtResource("24_ctatt")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="TowerButtons" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 13.799988
+offset_bottom = 10.200001
+scale = Vector2(3, 3)
+script = ExtResource("25_xgqkh")
+
+[node name="PlayerTowerMidButton" type="TextureButton" parent="UI/TowerButtons"]
+layout_mode = 0
+offset_left = -208.0
+offset_top = 20.0
+offset_right = -188.0
+offset_bottom = 40.0
+texture_normal = ExtResource("26_munwf")
+texture_hover = ExtResource("26_munwf")
+
+[node name="PlayerTowerTopButton" type="TextureButton" parent="UI/TowerButtons"]
+layout_mode = 0
+offset_left = -175.0
+offset_top = -30.0
+offset_right = -155.0
+offset_bottom = -10.0
+texture_normal = ExtResource("26_munwf")
+texture_hover = ExtResource("26_munwf")
+
+[node name="PlayerTowerBotButton" type="TextureButton" parent="UI/TowerButtons"]
+layout_mode = 0
+offset_left = -175.0
+offset_top = 75.0
+offset_right = -155.0
+offset_bottom = 95.0
+texture_normal = ExtResource("26_munwf")
+texture_hover = ExtResource("26_munwf")
+
 [node name="GraveyardLevel" type="Node2D" parent="."]
 visible = false
 
@@ -1013,125 +1137,6 @@ position = Vector2(0, 300)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
 
-[node name="UI" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="TopBar" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -545.0
-offset_top = 359.0
-offset_right = -505.0
-offset_bottom = 399.0
-
-[node name="ColorRect" type="ColorRect" parent="UI/TopBar"]
-layout_mode = 0
-offset_left = 81.0
-offset_right = 1050.0
-offset_bottom = 122.0
-color = Color(0.221302, 0.221302, 0.221302, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopBar"]
-layout_mode = 0
-offset_left = -200.0
-offset_top = -600.0
-offset_right = 155.0
-offset_bottom = -515.0
-rotation = 1.5707964
-scale = Vector2(2, 2)
-
-[node name="SideBar" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -800.0
-offset_top = -150.0
-offset_right = -800.0
-offset_bottom = -150.0
-
-[node name="TextureRect" type="TextureRect" parent="UI/SideBar"]
-layout_mode = 1
-offset_right = 294.0
-offset_bottom = 80.0
-rotation = 1.5707964
-scale = Vector2(2, 2)
-texture = ExtResource("20_7iits")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/SideBar"]
-layout_mode = 0
-offset_left = -142.0
-offset_top = 26.0
-offset_right = -17.0
-offset_bottom = 565.0
-
-[node name="Unit1_Button" type="TextureButton" parent="UI/SideBar/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_4wyf3")
-
-[node name="Label" type="Label" parent="UI/SideBar/VBoxContainer/Unit1_Button"]
-layout_mode = 0
-offset_top = 34.0
-offset_right = 40.0
-offset_bottom = 57.0
-text = "50"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
-offset_left = -686.0
-offset_top = 475.0
-offset_right = -558.0
-offset_bottom = 491.0
-scale = Vector2(3, 3)
-value = 60.0
-texture_over = ExtResource("22_kpybi")
-texture_progress = ExtResource("23_ctatt")
-texture_progress_offset = Vector2(4, 4)
-
-[node name="EnemyHealthBar" type="TextureProgressBar" parent="UI"]
-offset_left = 312.0
-offset_top = 471.0
-offset_right = 440.0
-offset_bottom = 487.0
-scale = Vector2(3, 3)
-value = 60.0
-texture_over = ExtResource("22_kpybi")
-texture_progress = ExtResource("24_ctatt")
-texture_progress_offset = Vector2(4, 4)
-
-[node name="TowerButtons" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 13.799988
-offset_bottom = 10.200001
-scale = Vector2(3, 3)
-script = ExtResource("25_xgqkh")
-
-[node name="PlayerTowerMidButton" type="TextureButton" parent="UI/TowerButtons"]
-layout_mode = 0
-offset_left = -208.0
-offset_top = 20.0
-offset_right = -188.0
-offset_bottom = 40.0
-texture_normal = ExtResource("26_munwf")
-texture_hover = ExtResource("26_munwf")
-
-[node name="PlayerTowerTopButton" type="TextureButton" parent="UI/TowerButtons"]
-layout_mode = 0
-offset_left = -175.0
-offset_top = -30.0
-offset_right = -155.0
-offset_bottom = -10.0
-texture_normal = ExtResource("26_munwf")
-texture_hover = ExtResource("26_munwf")
-
-[node name="PlayerTowerBotButton" type="TextureButton" parent="UI/TowerButtons"]
-layout_mode = 0
-offset_left = -175.0
-offset_top = 75.0
-offset_right = -155.0
-offset_bottom = 95.0
-texture_normal = ExtResource("26_munwf")
-texture_hover = ExtResource("26_munwf")
-
 [node name="EconomyController" parent="." instance=ExtResource("26_ts3gi")]
+
+[node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]

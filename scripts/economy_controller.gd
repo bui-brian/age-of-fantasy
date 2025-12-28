@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var gold_timer: Timer = $GoldTimer
-@onready var world: Node2D = $".."
+@onready var sorc_spawner: UnitSpawner = $"../UnitSpawner"
 
 var player_gold: int = 0
 var enemy_gold: int = 0
@@ -13,7 +13,7 @@ func _ready():
 	gold_timer.timeout.connect(gold_tick)
 	gold_timer.start()
 	
-	world.gold_spent.connect(spend_gold)
+	sorc_spawner.gold_spent.connect(spend_gold)
 
 func gold_tick():
 	player_gold += gold_per_tick
