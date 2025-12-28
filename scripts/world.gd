@@ -3,6 +3,8 @@ extends Node2D
 @onready var unit_1_button: TextureButton = $UI/SideBar/VBoxContainer/Unit1_Button
 @onready var tower_buttons: Control = $UI/TowerButtons
 
+signal gold_spent(gold_amount)
+
 const lm_scene_path = "res://scenes/units/lightning_sorc.tscn"
 const knight_scene_path = "res://scenes/units/knight.tscn"
 const dm_scene_path = "res://scenes/units/dark_magician.tscn"
@@ -37,14 +39,17 @@ func _on_unit_1_button_pressed() -> void:
 		var mid_spawn = preload(dm_scene_path).instantiate()
 		var player_spawn_mid = spawn_unit(mid_spawn, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50))
 		self.add_child(player_spawn_mid)
+		gold_spent.emit(50)
 	if top_toggle:
 		var top_spawn = preload(lm_scene_path).instantiate()
 		var player_spawn_top = spawn_unit(top_spawn, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -100))
 		self.add_child(player_spawn_top)
+		gold_spent.emit(50)
 	if bot_toggle:
 		var bot_spawn = preload(lm_scene_path).instantiate()
 		var player_spawn_bot = spawn_unit(bot_spawn, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250))
 		self.add_child(player_spawn_bot)
+		gold_spent.emit(50)
 	
 	# Preload all units
 	#var lm_scene1 = preload(lm_scene_path).instantiate()
