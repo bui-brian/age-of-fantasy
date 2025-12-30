@@ -13,13 +13,14 @@ func _ready():
 	gold_timer.timeout.connect(gold_tick)
 	gold_timer.start()
 	
-	sorc_spawner.gold_spent.connect(spend_gold)
+	sorc_spawner.gold_spent.connect(_on_gold_spent)
 
 func gold_tick():
 	player_gold += gold_per_tick
 	enemy_gold += gold_per_tick
-	print("Player gold: ", player_gold)
-	print("Enemy gold: ", enemy_gold)
+	GameState.set_gold(player_gold, enemy_gold)
+	#print("Player gold: ", player_gold)
+	#print("Enemy gold: ", enemy_gold)
 
-func spend_gold(gold_amount):
+func _on_gold_spent(gold_amount):
 	player_gold -= gold_amount

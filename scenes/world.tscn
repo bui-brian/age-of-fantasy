@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=44 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
@@ -26,8 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
 [ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/tower_buttons.gd" id="25_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://d4elu0o7mxx4a" path="res://assets/ui/Edinnu_UI_asset_pack/Target/Target (10).png" id="26_munwf"]
-[ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/economy_controller.tscn" id="26_ts3gi"]
+[ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/controllers/economy_controller.tscn" id="26_ts3gi"]
 [ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="28_0nbtd"]
+[ext_resource type="PackedScene" uid="uid://cppmo7nbo2qoi" path="res://scenes/controllers/enemy_controller.tscn" id="29_37qwj"]
+[ext_resource type="PackedScene" uid="uid://3yxfrprhmkm7" path="res://scenes/game_state.tscn" id="30_navra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_rwgxs")
@@ -1140,3 +1142,8 @@ shape = SubResource("RectangleShape2D_oo54l")
 [node name="EconomyController" parent="." instance=ExtResource("26_ts3gi")]
 
 [node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
+
+[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
+unit_spawner = NodePath("../UnitSpawner")
+
+[node name="GameState" parent="." instance=ExtResource("30_navra")]

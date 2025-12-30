@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cppmo7nbo2qoi"]
+
+[ext_resource type="Script" uid="uid://b8kop78orpdqb" path="res://scripts/enemy_controller.gd" id="1_7dwqs"]
+
+[node name="EnemyController" type="Node2D"]
+script = ExtResource("1_7dwqs")
+
+[node name="Timer" type="Timer" parent="."]
