@@ -15,27 +15,31 @@ func _ready() -> void:
 
 # --- Button handlers ---
 func _sorceress_button_pressed() -> void:
-	#sorc_spawner.spawn_unit_lane()
 	# If toggles are on, spawn in respective lane
-	if mid_toggle:
-		# Preload Sorceress scene
-		var sorc_scene = preload(sorc_scene_path).instantiate()
-		# Construct player Sorceress unit
-		var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50))
-		unit_spawner.spawn_unit_lane(sorc_unit)
-		
 	if top_toggle:
 		# Preload Sorceress scene
 		var sorc_scene = preload(sorc_scene_path).instantiate()
 		# Construct player Sorceress unit
-		var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -100))
+		var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -100), Unit.UnitLane.TOP)
 		unit_spawner.spawn_unit_lane(sorc_unit)
+		#unit_spawner.player_unit_count_top += 1
+		GameState.set_player_count(GameState.current_player_unit_count_mid, GameState.current_player_unit_count_top+1, GameState.current_player_unit_count_bot)
+	if mid_toggle:
+		# Preload Sorceress scene
+		var sorc_scene = preload(sorc_scene_path).instantiate()
+		# Construct player Sorceress unit
+		var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50), Unit.UnitLane.MID)
+		unit_spawner.spawn_unit_lane(sorc_unit)
+		#unit_spawner.player_unit_count_mid += 1
+		GameState.set_player_count(GameState.current_player_unit_count_mid+1, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot)
 	if bot_toggle:
 		# Preload Sorceress scene
 		var sorc_scene = preload(sorc_scene_path).instantiate()
 		# Construct player Sorceress unit
-		var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250))
+		var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250), Unit.UnitLane.BOT)
 		unit_spawner.spawn_unit_lane(sorc_unit)
+		#unit_spawner.player_unit_count_bot += 1
+		GameState.set_player_count(GameState.current_player_unit_count_mid, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot+1)
 	
 
 func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool) -> void:

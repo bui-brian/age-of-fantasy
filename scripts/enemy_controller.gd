@@ -3,7 +3,7 @@ extends Node2D
 @export var unit_spawner: UnitSpawner
 @onready var timer: Timer = $Timer
 
-var enemy_tick_rate: float = 1.0
+var enemy_tick_rate: float = 2.0
 var prioritize_lane: int = 0 # top = 1, mid = 2, bot = 3
 
 const sorc_scene_path = "res://scenes/units/lightning_sorc.tscn"
@@ -18,9 +18,11 @@ func _ready() -> void:
 func enemy_ai_tick():
 	# If enemy cannot afford lowest unit, pass
 	if GameState.enemy_gold < 50:
-		print(GameState.enemy_gold)
 		return
-	
+	print("Top count: ", GameState.current_player_unit_count_top)
+	print("Mid count: ", GameState.current_player_unit_count_mid)
+	print("Bot count: ", GameState.current_player_unit_count_bot)
+	print("==============")
 	# First, check player unit count across each lane to determine which lane to prioritize
 	if GameState.current_player_unit_count_top > GameState.current_player_unit_count_mid and GameState.current_player_unit_count_top > GameState.current_player_unit_count_bot:
 		prioritize_lane = 1
@@ -37,7 +39,7 @@ func enemy_ai_tick():
 				# 	Preload Sorceress scene
 				var sorc_scene = preload(sorc_scene_path).instantiate()
 				# Construct player Sorceress unit
-				var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100))
+				var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Unit.UnitLane.TOP)
 				unit_spawner.spawn_unit_lane(sorc_unit)
 			elif GameState.current_player_unit_count_top < GameState.enemy_unit_count_mid:
 				pass
@@ -46,7 +48,7 @@ func enemy_ai_tick():
 				# 	Preload Knight scene
 				var knight_scene = preload(knight_scene_path).instantiate()
 				# Construct player Knight unit
-				var knight_unit = unit_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100))
+				var knight_unit = unit_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Unit.UnitLane.TOP)
 				unit_spawner.spawn_unit_lane(knight_unit)
 		2: # Mid lane prio
 			# If there are more player units than enemy units
@@ -55,7 +57,7 @@ func enemy_ai_tick():
 				# 	Preload Sorceress scene
 				var sorc_scene = preload(sorc_scene_path).instantiate()
 				# Construct player Sorceress unit
-				var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50))
+				var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50), Unit.UnitLane.MID)
 				unit_spawner.spawn_unit_lane(sorc_unit)
 			elif GameState.current_player_unit_count_mid < GameState.enemy_unit_count_mid:
 				pass
@@ -63,7 +65,7 @@ func enemy_ai_tick():
 				# Spawn Knight
 				var knight_scene = preload(knight_scene_path).instantiate()
 				# Construct player Knight unit
-				var knight_unit = unit_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50))
+				var knight_unit = unit_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50), Unit.UnitLane.MID)
 				unit_spawner.spawn_unit_lane(knight_unit)
 		3: # Bot lane prio
 			if GameState.current_player_unit_count_bot > GameState.enemy_unit_count_bot and GameState.enemy_gold >= 50:
@@ -71,7 +73,7 @@ func enemy_ai_tick():
 				# 	Preload Sorceress scene
 				var sorc_scene = preload(sorc_scene_path).instantiate()
 				# Construct player Sorceress unit
-				var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250))
+				var sorc_unit = unit_spawner.spawn_unit(sorc_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250), Unit.UnitLane.BOT)
 				unit_spawner.spawn_unit_lane(sorc_unit)
 			elif GameState.current_player_unit_count_bot < GameState.enemy_unit_count_bot:
 				pass
@@ -79,6 +81,6 @@ func enemy_ai_tick():
 				# Spawn Knight
 				var knight_scene = preload(knight_scene_path).instantiate()
 				# Construct player Knight unit
-				var knight_unit = unit_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250))
+				var knight_unit = unit_spawner.spawn_unit(knight_scene, Unit.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250), Unit.UnitLane.BOT)
 				unit_spawner.spawn_unit_lane(knight_unit)
 	

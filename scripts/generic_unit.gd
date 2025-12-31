@@ -10,14 +10,21 @@ enum Faction {
 	ENEMY,
 }
 
+enum UnitLane {
+	TOP,
+	MID,
+	BOT
+}
+
 var faction: Faction
 var stats : Stats = Stats.new()
 var direction := 0 # 1 = right, -1 = left
+var current_lane: UnitLane
 
-func _ready():
+func _ready() -> void:
 	set_fill_mode.call_deferred()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	raycast_detection()
 
 func set_fill_mode() -> void:

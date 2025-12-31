@@ -12,10 +12,33 @@ func receive_hit(damage: int) -> void:
 		return
 		
 	stats.health -= damage # health_changed or health_depleted signal emits
-	print(stats.health)
 	
 	if stats.health <= 0:
 		#owner_ani_player.set_current_animation("death")
 		#await get_tree().create_timer(1.0).timeout
 		#owner_health_bar.queue_free()
+		#stats.health_depleted.emit(stats.unit_lane)
+		match owner.current_lane:
+			Unit.UnitLane.TOP:
+				if GameState.current_player_unit_count_top < 1:
+					#GameState.current_player_unit_count_top = 0
+					GameState.set_player_count(GameState.current_player_unit_count_mid, 0, GameState.current_player_unit_count_bot)
+				else:
+					#GameState.current_player_unit_count_top -= 1
+					GameState.set_player_count(GameState.current_player_unit_count_mid, GameState.current_player_unit_count_top-1, GameState.current_player_unit_count_bot)
+			Unit.UnitLane.MID:
+				if GameState.current_player_unit_count_mid < 1:
+					#GameState.current_player_unit_count_mid = 0
+					GameState.set_player_count(0, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot)
+				else:
+					#GameState.current_player_unit_count_mid -= 1
+					GameState.set_player_count(GameState.current_player_unit_count_mid-1, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot)
+					print("subtracted 1 from mid")
+			Unit.UnitLane.BOT:
+				if GameState.current_player_unit_count_bot < 1:
+					#GameState.current_player_unit_count_bot = 0
+					GameState.set_player_count(GameState.current_player_unit_count_mid, GameState.current_player_unit_count_top, 0)
+				else:
+					#GameState.current_player_unit_count_bot -= 1
+					GameState.set_player_count(GameState.current_player_unit_count_mid, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot-1)
 		owner.queue_free()
