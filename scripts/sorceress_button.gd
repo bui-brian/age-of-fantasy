@@ -36,8 +36,9 @@ func _reset_cooldown_timer() -> void:
 func _sorceress_button_pressed() -> void:
 	if !button_available:
 		return
+	
 	set_cooldown_timer()
-	print("Timer started")
+
 	# If toggles are on, spawn in respective lane
 	if top_toggle:
 		# Preload Sorceress scene

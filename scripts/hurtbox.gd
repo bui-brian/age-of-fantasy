@@ -33,7 +33,6 @@ func receive_hit(damage: int) -> void:
 				else:
 					#GameState.current_player_unit_count_mid -= 1
 					GameState.set_player_count(GameState.current_player_unit_count_mid-1, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot)
-					print("subtracted 1 from mid")
 			Unit.UnitLane.BOT:
 				if GameState.current_player_unit_count_bot < 1:
 					#GameState.current_player_unit_count_bot = 0
@@ -41,4 +40,6 @@ func receive_hit(damage: int) -> void:
 				else:
 					#GameState.current_player_unit_count_bot -= 1
 					GameState.set_player_count(GameState.current_player_unit_count_mid, GameState.current_player_unit_count_top, GameState.current_player_unit_count_bot-1)
+		
+		# Remove unit from scene
 		owner.queue_free()

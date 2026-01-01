@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
 [ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/tower_buttons.gd" id="25_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://d4elu0o7mxx4a" path="res://assets/ui/Edinnu_UI_asset_pack/Target/Target (10).png" id="26_munwf"]
-[ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/controllers/economy_controller.tscn" id="26_ts3gi"]
+[ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/controllers/gold_controller.tscn" id="26_ts3gi"]
 [ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="28_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://cppmo7nbo2qoi" path="res://scenes/controllers/enemy_controller.tscn" id="29_37qwj"]
 [ext_resource type="PackedScene" uid="uid://3yxfrprhmkm7" path="res://scenes/game_state.tscn" id="30_navra"]
@@ -1127,7 +1127,7 @@ position = Vector2(0, 300)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
 
-[node name="EconomyController" parent="." instance=ExtResource("26_ts3gi")]
+[node name="GoldController" parent="." instance=ExtResource("26_ts3gi")]
 
 [node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
 
