@@ -1,10 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=19 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/components/sorceress_button.tscn" id="3_37qwj"]
+[ext_resource type="PackedScene" uid="uid://bx7efghlv8838" path="res://scenes/components/tower.tscn" id="10_dss4m"]
 [ext_resource type="AudioStream" uid="uid://gca5mbq56l2y" path="res://assets/music/new-gameplay-music.mp3" id="12_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
-[ext_resource type="Texture2D" uid="uid://ddeyiiigp44ep" path="res://assets/level/Mage_Towers_Pixel_Art_for_Tower_Defense/2 Idle/7.png" id="18_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
 [ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
@@ -15,42 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="28_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://cppmo7nbo2qoi" path="res://scenes/controllers/enemy_controller.tscn" id="29_37qwj"]
 [ext_resource type="PackedScene" uid="uid://3yxfrprhmkm7" path="res://scenes/game_state.tscn" id="30_navra"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oo54l"]
-atlas = ExtResource("18_7iits")
-region = Rect2(0, 0, 70, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpybi"]
-atlas = ExtResource("18_7iits")
-region = Rect2(70, 0, 70, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctatt"]
-atlas = ExtResource("18_7iits")
-region = Rect2(140, 0, 70, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgqkh"]
-atlas = ExtResource("18_7iits")
-region = Rect2(210, 0, 70, 130)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_munwf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oo54l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kpybi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ctatt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgqkh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf6f"]
 size = Vector2(2000, 20)
@@ -175,76 +139,47 @@ offset_bottom = 95.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
 
-[node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_q5onr")
-autoplay = true
-bus = &"Music"
-
 [node name="ElvenLevel" type="Node2D" parent="."]
 
 [node name="ElvenBattleground" type="Sprite2D" parent="ElvenLevel"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_7iits")
 
-[node name="PlayerTowerMid" type="AnimatedSprite2D" parent="ElvenLevel"]
-position = Vector2(-600, 65)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_munwf")
-autoplay = "default"
-frame_progress = 0.02317043
-
-[node name="PlayerTowerBot" type="AnimatedSprite2D" parent="ElvenLevel"]
-position = Vector2(-500, 215)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_munwf")
-autoplay = "default"
-frame_progress = 0.76064885
-
-[node name="PlayerTowerTop" type="AnimatedSprite2D" parent="ElvenLevel"]
+[node name="PlayerTowerTop" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
 position = Vector2(-500, -85)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_munwf")
-autoplay = "default"
-frame_progress = 0.76064885
 
-[node name="EnemyTowerMid" type="AnimatedSprite2D" parent="ElvenLevel"]
-position = Vector2(600, 65)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_munwf")
-autoplay = "default"
-frame_progress = 0.6971427
+[node name="PlayerTowerMid" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+position = Vector2(-600, 65)
 
-[node name="EnemyTowerBot" type="AnimatedSprite2D" parent="ElvenLevel"]
-position = Vector2(500, 215)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_munwf")
-autoplay = "default"
-frame_progress = 0.6971427
+[node name="PlayerTowerBot" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+position = Vector2(-500, 215)
 
-[node name="EnemyTowerTop" type="AnimatedSprite2D" parent="ElvenLevel"]
+[node name="EnemyTowerTop" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
 position = Vector2(500, -85)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_munwf")
-autoplay = "default"
-frame_progress = 0.6971427
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="EnemyTowerMid" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+position = Vector2(600, 65)
 
-[node name="MiddleLane" type="StaticBody2D" parent="."]
+[node name="EnemyTowerBot" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+position = Vector2(500, 215)
+
+[node name="Lanes" type="Node2D" parent="."]
+
+[node name="MiddleLane" type="StaticBody2D" parent="Lanes"]
 position = Vector2(0, 150)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MiddleLane"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/MiddleLane"]
 shape = SubResource("RectangleShape2D_2lf6f")
 
-[node name="TopLane" type="StaticBody2D" parent="."]
+[node name="TopLane" type="StaticBody2D" parent="Lanes"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLane"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/TopLane"]
 shape = SubResource("RectangleShape2D_7iits")
 
-[node name="BottomLane" type="StaticBody2D" parent="."]
+[node name="BottomLane" type="StaticBody2D" parent="Lanes"]
 position = Vector2(0, 300)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLane"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
 
 [node name="GoldController" parent="." instance=ExtResource("26_ts3gi")]
@@ -255,3 +190,10 @@ shape = SubResource("RectangleShape2D_oo54l")
 unit_spawner = NodePath("../UnitSpawner")
 
 [node name="GameState" parent="." instance=ExtResource("30_navra")]
+
+[node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_q5onr")
+autoplay = true
+bus = &"Music"
+
+[node name="Camera2D" type="Camera2D" parent="."]

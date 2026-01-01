@@ -5,6 +5,7 @@ class_name Unit extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var health_bar: ProgressBar = $HealthBar
+#@onready var owner_ani_player = owner.get_node("AnimationPlayer")
 
 enum Faction {
 	PLAYER,
@@ -18,7 +19,7 @@ enum UnitLane {
 }
 
 var faction: Faction
-var stats : Stats = Stats.new()
+var stats: Stats = Stats.new()
 var direction := 0 # 1 = right, -1 = left
 var current_lane: UnitLane
 
@@ -27,6 +28,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	raycast_detection()
+
+func _on_health_depleted() -> void:
+	pass
+	#owner_ani_player.set_current_animation("death")
+	#await get_tree().create_timer(1.0).timeout
+	#owner_health_bar.queue_free()
+	#stats.health_depleted.emit(stats.unit_lane)
 
 func set_fill_mode() -> void:
 	if direction >= 0:
