@@ -1,7 +1,5 @@
 class_name UnitSpawner extends Node2D
 
-signal gold_spent(gold_amount)
-
 const sorc_scene_path = "res://scenes/units/lightning_sorc.tscn"
 const knight_scene_path = "res://scenes/units/knight.tscn"
 const dm_scene_path = "res://scenes/units/dark_magician.tscn"
@@ -20,4 +18,3 @@ func spawn_unit(unit_scene: Variant, unit_group: Unit.Faction, unit_direction: V
 
 func spawn_unit_lane(unit) -> void:
 	get_tree().current_scene.add_child(unit)
-	gold_spent.emit(50)
