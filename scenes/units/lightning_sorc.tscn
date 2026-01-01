@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2i75voiued42"]
+[gd_scene load_steps=21 format=3 uid="uid://c2i75voiued42"]
 
 [ext_resource type="Script" uid="uid://bca0gaa3mcr70" path="res://scripts/lightning_sorc.gd" id="1_kxtcu"]
 [ext_resource type="Texture2D" uid="uid://bgamkb4qrrafx" path="res://assets/units/Lightning Mage/Idle.png" id="2_8n5g7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqbhbphd31apl" path="res://assets/units/Lightning Mage/Attack_1.png" id="4_j88mp"]
 [ext_resource type="Texture2D" uid="uid://cw17hnqaewggn" path="res://assets/units/Lightning Mage/Light_charge.png" id="5_wy7mf"]
 [ext_resource type="AudioStream" uid="uid://yxgyf4s5y5ma" path="res://assets/sfx/electro_hit_01-95940.mp3" id="6_hajed"]
+[ext_resource type="Texture2D" uid="uid://canbpybrtl0fm" path="res://assets/units/Lightning Mage/Dead.png" id="7_8n5g7"]
 [ext_resource type="PackedScene" uid="uid://ccold6nd2hi6x" path="res://scenes/components/hurtbox.tscn" id="7_ix7ee"]
 [ext_resource type="PackedScene" uid="uid://6hjv23dhua0r" path="res://scenes/components/hitbox.tscn" id="8_hbmdm"]
 [ext_resource type="PackedScene" uid="uid://bq85vhmgmmlgn" path="res://scenes/components/health_bar.tscn" id="9_w0lk5"]
@@ -94,7 +95,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wfxun"]
@@ -371,11 +372,76 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tjpgm"]
+resource_name = "death"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_8n5g7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqc3w"]
 _data = {
 &"RESET": SubResource("Animation_cmabp"),
 &"attack1": SubResource("Animation_wfxun"),
+&"death": SubResource("Animation_tjpgm"),
 &"idle": SubResource("Animation_gog5y"),
 &"melee": SubResource("Animation_dqc3w"),
 &"run": SubResource("Animation_8ek24")
@@ -422,6 +488,7 @@ monitoring = false
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_gog5y")
+disabled = true
 
 [node name="HealthBar" parent="." instance=ExtResource("9_w0lk5")]
 offset_left = -31.0

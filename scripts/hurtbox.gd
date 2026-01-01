@@ -40,5 +40,13 @@ func _on_health_depleted() -> void:
 				#GameState.player_unit_count_bot -= 1
 				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, GameState.player_unit_count_bot-1)
 	
+	# Stop unit's processes
+	owner.set_process(false)
+	owner.set_physics_process(false)
+	owner.set_process_input(false)
+	owner.velocity = Vector2.ZERO
+	owner.animation_player.set_current_animation("death")
+	await owner.animation_player.animation_finished
+	
 	# Remove unit from scene
 	owner.queue_free()

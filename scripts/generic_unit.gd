@@ -5,7 +5,6 @@ class_name Unit extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var health_bar: ProgressBar = $HealthBar
-#@onready var owner_ani_player = owner.get_node("AnimationPlayer")
 
 enum Faction {
 	PLAYER,
@@ -29,13 +28,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	raycast_detection()
 
-func _on_health_depleted() -> void:
-	pass
-	#owner_ani_player.set_current_animation("death")
-	#await get_tree().create_timer(1.0).timeout
-	#owner_health_bar.queue_free()
-	#stats.health_depleted.emit(stats.unit_lane)
-
 func set_fill_mode() -> void:
 	if direction >= 0:
 		health_bar.fill_mode = ProgressBar.FILL_BEGIN_TO_END
@@ -57,20 +49,19 @@ func raycast_detection():
 					Faction.PLAYER: # if collider is player, stop
 						stats.speed = 0
 						animation_player.set_current_animation("idle")
-
+					
 					Faction.ENEMY: # if collider is enemy, attack
 						stats.speed = 0
 						animation_player.set_current_animation("attack1")
 						hitbox.attacker_stats = stats
-	
-
+						
 			Faction.ENEMY: # if you are the enemy, attack the player and stop for enemy
 				match unit_check.faction:
 					Faction.PLAYER: #  if collider is player, player
 						stats.speed = 0
 						animation_player.set_current_animation("attack1")
 						hitbox.attacker_stats = stats
-
+					
 					Faction.ENEMY: # if collider is enemy, stop
 						stats.speed = 0
 						animation_player.set_current_animation("idle")
