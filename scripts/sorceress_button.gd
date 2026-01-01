@@ -2,6 +2,7 @@ extends TextureButton
 
 @onready var unit_spawner: UnitSpawner = $"../../../../UnitSpawner"
 @onready var tower_buttons: Control = $"../../../TowerButtons"
+@onready var timer: Timer = $Timer
 
 const sorc_scene_path = "res://scenes/units/lightning_sorc.tscn"
 
@@ -9,12 +10,34 @@ var mid_toggle: bool = false
 var top_toggle: bool = false
 var bot_toggle: bool = false
 
+var spawn_button_cooldown: float = 2.0
+var button_available: bool = true
+
 func _ready() -> void:
 	self.pressed.connect(_sorceress_button_pressed)
 	tower_buttons.toggled.connect(_set_toggled)
+	timer.timeout.connect(_reset_cooldown_timer)
+
+func set_cooldown_timer() -> void:
+	if !button_available:
+		return
+	
+	button_available = false
+	timer.one_shot = true
+	timer.wait_time = spawn_button_cooldown
+	timer.start()
+
+func _reset_cooldown_timer() -> void:
+	if button_available:
+		return
+	button_available = true
 
 # --- Button handlers ---
 func _sorceress_button_pressed() -> void:
+	if !button_available:
+		return
+	set_cooldown_timer()
+	print("Timer started")
 	# If toggles are on, spawn in respective lane
 	if top_toggle:
 		# Preload Sorceress scene

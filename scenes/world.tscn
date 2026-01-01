@@ -1,9 +1,9 @@
-[gd_scene load_steps=44 format=4 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=43 format=4 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://c51fa7e4y5ua1" path="res://assets/level/backgrounds/Background_0.png" id="2_71j4m"]
 [ext_resource type="Texture2D" uid="uid://b82yxyim3k5ym" path="res://assets/level/Graveyard/Tiles.png" id="2_rwgxs"]
-[ext_resource type="Texture2D" uid="uid://c71gm5qxfq4ve" path="res://assets/ui/icons/tile008.png" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/components/sorceress_button.tscn" id="3_37qwj"]
 [ext_resource type="Texture2D" uid="uid://brvegulxhxm82" path="res://assets/level/backgrounds/Background_1.png" id="3_qfnet"]
 [ext_resource type="Texture2D" uid="uid://df1wvteelupjx" path="res://assets/level/Graveyard/Grass_background_1.png" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://brr5c7ikwirt0" path="res://assets/level/Graveyard/Grass_background_2.png" id="5_w7kh3"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://ddeyiiigp44ep" path="res://assets/level/Mage_Towers_Pixel_Art_for_Tower_Defense/2 Idle/7.png" id="18_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
-[ext_resource type="Script" uid="uid://vl705nfl456s" path="res://scripts/sorceress_button.gd" id="21_ts3gi"]
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
 [ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
@@ -879,19 +878,8 @@ offset_top = 26.0
 offset_right = -17.0
 offset_bottom = 565.0
 
-[node name="SorceressButton" type="TextureButton" parent="UI/SideBar/VBoxContainer"]
+[node name="SorceressButton" parent="UI/SideBar/VBoxContainer" instance=ExtResource("3_37qwj")]
 layout_mode = 2
-texture_normal = ExtResource("3_4wyf3")
-script = ExtResource("21_ts3gi")
-
-[node name="Label" type="Label" parent="UI/SideBar/VBoxContainer/SorceressButton"]
-layout_mode = 0
-offset_top = 34.0
-offset_right = 40.0
-offset_bottom = 57.0
-text = "50"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
 offset_left = -686.0

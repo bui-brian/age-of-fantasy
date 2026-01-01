@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5diia6ysgo7f"]
+
+[ext_resource type="Texture2D" uid="uid://c71gm5qxfq4ve" path="res://assets/ui/icons/tile008.png" id="1_ob5ip"]
+[ext_resource type="Script" uid="uid://vl705nfl456s" path="res://scripts/sorceress_button.gd" id="2_xvrsj"]
+
+[node name="SorceressButton" type="TextureButton"]
+texture_normal = ExtResource("1_ob5ip")
+script = ExtResource("2_xvrsj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 40.0
+offset_bottom = 57.0
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
