@@ -3,7 +3,7 @@ class_name Health
 extends Node2D
 
 signal health_depleted
-signal health_changed(cur_health: int, max_health: int)
+signal health_changed(cur_health: int)
 
 @export var current_max_health: int = 100
 
@@ -20,13 +20,13 @@ func setup_stats() -> void:
 
 func _on_health_set(new_value: int) -> void:
 	current_health = clampi(new_value, 0, current_max_health)
-	health_changed.emit(current_health, current_max_health)
+	health_changed.emit(current_health)
 	
 	if current_health <= 0:
 		health_depleted.emit()
 
 func _on_health_depleted() -> void:
-	if current_health > 0:
+	if current_health > 0 or owner is Tower:
 		return
 		
 	match owner.current_lane:
@@ -56,7 +56,7 @@ func _on_health_depleted() -> void:
 	owner.set_process(false)
 	owner.set_physics_process(false)
 	owner.set_process_input(false)
-	owner.velocity = Vector2.ZERO
+	#owner.velocity = Vector2.ZERO
 	owner.animation_player.set_current_animation("death")
 	await owner.animation_player.animation_finished
 	

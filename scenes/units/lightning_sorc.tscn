@@ -475,6 +475,8 @@ shape = SubResource("RectangleShape2D_8ek24")
 [node name="AttackRaycast" type="RayCast2D" parent="."]
 position = Vector2(-5, 15)
 target_position = Vector2(100, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="FriendlyRaycast" type="RayCast2D" parent="."]
 position = Vector2(-5, 33)

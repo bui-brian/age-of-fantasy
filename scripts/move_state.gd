@@ -37,12 +37,10 @@ func attack_detection() -> void:
 	# match self depending on the faction
 	match parent.faction:
 		Unit.Faction.PLAYER:
-			if hurtbox_check.faction != Unit.Faction.ENEMY:
-				return
-			parent.velocity.x = 0
-			parent.state_machine.change_state(attack_state)
+			if hurtbox_check.owner.faction == Unit.Faction.ENEMY:
+				parent.velocity.x = 0
+				parent.state_machine.change_state(attack_state)
 		Unit.Faction.ENEMY:
-			if hurtbox_check.faction != Unit.Faction.PLAYER:
-				return
-			parent.velocity.x = 0
-			parent.state_machine.change_state(attack_state)
+			if hurtbox_check.owner.faction == Unit.Faction.PLAYER:
+				parent.velocity.x = 0
+				parent.state_machine.change_state(attack_state)
