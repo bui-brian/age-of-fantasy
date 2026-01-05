@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c2i75voiued42"]
+[gd_scene load_steps=23 format=3 uid="uid://c2i75voiued42"]
 
 [ext_resource type="Script" uid="uid://bca0gaa3mcr70" path="res://scripts/lightning_sorc.gd" id="1_kxtcu"]
 [ext_resource type="Texture2D" uid="uid://bgamkb4qrrafx" path="res://assets/units/Lightning Mage/Idle.png" id="2_8n5g7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://6hjv23dhua0r" path="res://scenes/components/hitbox.tscn" id="8_hbmdm"]
 [ext_resource type="PackedScene" uid="uid://bq85vhmgmmlgn" path="res://scenes/components/health_bar.tscn" id="9_w0lk5"]
 [ext_resource type="PackedScene" uid="uid://d11m51wbw54gb" path="res://scenes/components/state_machine.tscn" id="11_tjpgm"]
+[ext_resource type="PackedScene" uid="uid://pyd0x5pbe8bl" path="res://scenes/components/health.tscn" id="12_j88mp"]
 
 [sub_resource type="Animation" id="Animation_cmabp"]
 length = 0.001
@@ -479,8 +480,9 @@ target_position = Vector2(100, 0)
 position = Vector2(-5, 33)
 target_position = Vector2(43, 0)
 
-[node name="Hurtbox" parent="." instance=ExtResource("7_ix7ee")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("7_ix7ee")]
 position = Vector2(-5, 33)
+health = NodePath("../Health")
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.5, 0)
@@ -495,13 +497,16 @@ monitoring = false
 shape = SubResource("RectangleShape2D_gog5y")
 disabled = true
 
-[node name="HealthBar" parent="." instance=ExtResource("9_w0lk5")]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("9_w0lk5")]
 offset_left = -31.0
 offset_top = -24.0
 offset_right = 21.0
 offset_bottom = -14.0
+health = NodePath("../Health")
 
 [node name="Attack2SFX" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
 [node name="state_machine" parent="." instance=ExtResource("11_tjpgm")]
+
+[node name="Health" parent="." instance=ExtResource("12_j88mp")]
