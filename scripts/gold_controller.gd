@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var gold_timer: Timer = $GoldTimer
 @onready var enemy_controller: Node2D = $"../EnemyController"
-@onready var sorceress_button: TextureButton = $"../UI/SideBar/VBoxContainer/SorceressButton"
+@onready var sorceress_button: TextureButton = $"../GUI/SideBar/VBoxContainer/SorceressButton"
 
 var player_gold: int = 0
 var enemy_gold: int = 0
@@ -22,8 +22,8 @@ func gold_tick():
 	player_gold += gold_per_tick
 	enemy_gold += gold_per_tick
 	GameState.set_gold(player_gold, enemy_gold)
-	print("Player gold: ", player_gold)
-	print("Enemy gold: ", enemy_gold)
+	#print("Player gold: ", player_gold)
+	#print("Enemy gold: ", enemy_gold)
 
 func _on_player_gold_spent(gold_spent):
 	player_gold -= gold_spent

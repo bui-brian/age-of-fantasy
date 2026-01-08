@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=21 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/components/sorceress_button.tscn" id="3_37qwj"]
+[ext_resource type="Script" uid="uid://di2vc54bfyhxx" path="res://scripts/health_bar_controller.gd" id="4_lakw3"]
+[ext_resource type="Script" uid="uid://cb83cnqrn1mdl" path="res://scripts/tower_controller.gd" id="10_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://bx7efghlv8838" path="res://scenes/components/tower.tscn" id="10_dss4m"]
 [ext_resource type="AudioStream" uid="uid://gca5mbq56l2y" path="res://assets/music/new-gameplay-music.mp3" id="12_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
@@ -28,10 +30,10 @@ size = Vector2(2000, 20)
 [node name="World" type="Node2D"]
 script = ExtResource("1_k0juu")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="TopBar" type="Control" parent="UI"]
+[node name="TopBar" type="Control" parent="GUI"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -40,14 +42,14 @@ offset_top = 359.0
 offset_right = -505.0
 offset_bottom = 399.0
 
-[node name="ColorRect" type="ColorRect" parent="UI/TopBar"]
+[node name="ColorRect" type="ColorRect" parent="GUI/TopBar"]
 layout_mode = 0
 offset_left = 81.0
 offset_right = 1050.0
 offset_bottom = 122.0
 color = Color(0.221302, 0.221302, 0.221302, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/TopBar"]
 layout_mode = 0
 offset_left = -200.0
 offset_top = -600.0
@@ -56,7 +58,7 @@ offset_bottom = -515.0
 rotation = 1.5707964
 scale = Vector2(2, 2)
 
-[node name="SideBar" type="Control" parent="UI"]
+[node name="SideBar" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -800.0
@@ -64,7 +66,7 @@ offset_top = -150.0
 offset_right = -800.0
 offset_bottom = -150.0
 
-[node name="TextureRect" type="TextureRect" parent="UI/SideBar"]
+[node name="TextureRect" type="TextureRect" parent="GUI/SideBar"]
 layout_mode = 1
 offset_right = 294.0
 offset_bottom = 80.0
@@ -72,39 +74,48 @@ rotation = 1.5707964
 scale = Vector2(2, 2)
 texture = ExtResource("20_7iits")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/SideBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/SideBar"]
 layout_mode = 0
 offset_left = -142.0
 offset_top = 26.0
 offset_right = -17.0
 offset_bottom = 565.0
 
-[node name="SorceressButton" parent="UI/SideBar/VBoxContainer" instance=ExtResource("3_37qwj")]
+[node name="SorceressButton" parent="GUI/SideBar/VBoxContainer" instance=ExtResource("3_37qwj")]
 layout_mode = 2
 
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+[node name="HealthBarController" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_lakw3")
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="GUI/HealthBarController"]
+layout_mode = 0
 offset_left = -686.0
 offset_top = 475.0
 offset_right = -558.0
 offset_bottom = 491.0
 scale = Vector2(3, 3)
-value = 60.0
+value = 100.0
 texture_over = ExtResource("22_kpybi")
 texture_progress = ExtResource("23_ctatt")
 texture_progress_offset = Vector2(4, 4)
 
-[node name="EnemyHealthBar" type="TextureProgressBar" parent="UI"]
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="GUI/HealthBarController"]
+layout_mode = 0
 offset_left = 312.0
 offset_top = 471.0
 offset_right = 440.0
 offset_bottom = 487.0
 scale = Vector2(3, 3)
-value = 60.0
+value = 100.0
 texture_over = ExtResource("22_kpybi")
 texture_progress = ExtResource("24_ctatt")
 texture_progress_offset = Vector2(4, 4)
 
-[node name="TowerButtons" type="Control" parent="UI"]
+[node name="TowerButtons" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 13.799988
@@ -112,7 +123,7 @@ offset_bottom = 10.200001
 scale = Vector2(3, 3)
 script = ExtResource("25_xgqkh")
 
-[node name="PlayerTowerMidButton" type="TextureButton" parent="UI/TowerButtons"]
+[node name="PlayerTowerMidButton" type="TextureButton" parent="GUI/TowerButtons"]
 layout_mode = 0
 offset_left = -208.0
 offset_top = 20.0
@@ -121,7 +132,7 @@ offset_bottom = 40.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
 
-[node name="PlayerTowerTopButton" type="TextureButton" parent="UI/TowerButtons"]
+[node name="PlayerTowerTopButton" type="TextureButton" parent="GUI/TowerButtons"]
 layout_mode = 0
 offset_left = -175.0
 offset_top = -30.0
@@ -130,7 +141,7 @@ offset_bottom = -10.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
 
-[node name="PlayerTowerBotButton" type="TextureButton" parent="UI/TowerButtons"]
+[node name="PlayerTowerBotButton" type="TextureButton" parent="GUI/TowerButtons"]
 layout_mode = 0
 offset_left = -175.0
 offset_top = 70.0
@@ -145,27 +156,30 @@ texture_hover = ExtResource("26_munwf")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_7iits")
 
-[node name="PlayerTowerTop" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+[node name="TowerController" type="Node2D" parent="ElvenLevel"]
+script = ExtResource("10_7t5mc")
+
+[node name="PlayerTowerTop" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-500, -85)
 
-[node name="PlayerTowerMid" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+[node name="PlayerTowerMid" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-600, 65)
 current_lane = 1
 
-[node name="PlayerTowerBot" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+[node name="PlayerTowerBot" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-500, 215)
 current_lane = 2
 
-[node name="EnemyTowerTop" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+[node name="EnemyTowerTop" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(500, -85)
 faction = 1
 
-[node name="EnemyTowerMid" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+[node name="EnemyTowerMid" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(600, 65)
 faction = 1
 current_lane = 1
 
-[node name="EnemyTowerBot" parent="ElvenLevel" instance=ExtResource("10_dss4m")]
+[node name="EnemyTowerBot" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(500, 215)
 faction = 1
 current_lane = 2
