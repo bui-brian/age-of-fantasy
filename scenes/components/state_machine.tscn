@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d11m51wbw54gb"]
+
+[ext_resource type="Script" uid="uid://dk4sy6urqn8yk" path="res://scripts/state_machine.gd" id="1_0w5bb"]
+[ext_resource type="Script" uid="uid://bcn8lnl0heepg" path="res://scripts/move_state.gd" id="2_by7ri"]
+[ext_resource type="Script" uid="uid://ctehng75ofrg5" path="res://scripts/attack_state.gd" id="3_toxmf"]
+[ext_resource type="Script" uid="uid://bu72aaps58umu" path="res://scripts/idle_state.gd" id="4_343b4"]
+
+[node name="state_machine" type="Node" node_paths=PackedStringArray("starting_state")]
+script = ExtResource("1_0w5bb")
+starting_state = NodePath("move_state")
+
+[node name="move_state" type="Node" parent="." node_paths=PackedStringArray("attack_state", "idle_state")]
+script = ExtResource("2_by7ri")
+attack_state = NodePath("../attack_state")
+idle_state = NodePath("../idle_state")
+animation_name = "run"
+
+[node name="attack_state" type="Node" parent="." node_paths=PackedStringArray("move_state", "idle_state")]
+script = ExtResource("3_toxmf")
+move_state = NodePath("../move_state")
+idle_state = NodePath("../idle_state")
+animation_name = "attack1"
+
+[node name="idle_state" type="Node" parent="." node_paths=PackedStringArray("move_state", "attack_state")]
+script = ExtResource("4_343b4")
+move_state = NodePath("../move_state")
+attack_state = NodePath("../attack_state")
+animation_name = "idle"

@@ -1,15 +1,11 @@
 extends ProgressBar
 
-@onready var stats: Stats = owner.stats
+@export var health: Health
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	stats.health_changed.connect(update_health)
-
-func _process(delta):
-	self.scale.x = 1
+	health.health_changed.connect(_update_health)
 
 # updates ProgressBar value every time Stats.health_changed signal emits
-# health, max_health are passed in as arguments
-func update_health(health, max_health):
-	value = health
+# current_health is passed in an argument
+func _update_health(current_health):
+	self.value = current_health
