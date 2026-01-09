@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=23 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/components/sorceress_button.tscn" id="3_37qwj"]
 [ext_resource type="Script" uid="uid://di2vc54bfyhxx" path="res://scripts/health_bar_controller.gd" id="4_lakw3"]
 [ext_resource type="Script" uid="uid://cb83cnqrn1mdl" path="res://scripts/tower_controller.gd" id="10_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://bx7efghlv8838" path="res://scenes/components/tower.tscn" id="10_dss4m"]
+[ext_resource type="PackedScene" uid="uid://bb73en382ou55" path="res://scenes/ui/gold_ui.tscn" id="10_lakw3"]
+[ext_resource type="Script" uid="uid://cd6gawiwe3tew" path="res://scripts/gold_ui_controller.gd" id="10_pm21f"]
 [ext_resource type="AudioStream" uid="uid://gca5mbq56l2y" path="res://assets/music/new-gameplay-music.mp3" id="12_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
@@ -149,6 +151,27 @@ offset_right = -155.0
 offset_bottom = 90.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
+
+[node name="GoldUIController" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_pm21f")
+
+[node name="PlayerGoldUI" parent="GUI/GoldUIController" instance=ExtResource("10_lakw3")]
+layout_mode = 0
+offset_left = -875.0
+offset_top = 450.0
+offset_right = -798.0
+offset_bottom = 490.0
+
+[node name="EnemyGoldUI" parent="GUI/GoldUIController" instance=ExtResource("10_lakw3")]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 450.0
+offset_right = 827.0
+offset_bottom = 490.0
 
 [node name="ElvenLevel" type="Node2D" parent="."]
 

@@ -3,6 +3,7 @@ extends Node2D
 
 signal state_changed(new_state: GameState)
 signal global_health_changed(player_health, enemy_health)
+signal global_gold_changed(player_gold, enemy_gold)
 
 var current_state: GameState
 
@@ -40,6 +41,7 @@ func set_gold(PLAYER_GOLD, ENEMY_GOLD):
 	player_gold = PLAYER_GOLD
 	enemy_gold = ENEMY_GOLD
 	state_changed.emit(self)
+	global_gold_changed.emit(player_gold, enemy_gold)
 
 func set_player_count(PLAYER_UNIT_COUNT_MID, PLAYER_UNIT_COUNT_TOP, PLAYER_UNIT_COUNT_BOT):
 	player_unit_count_top = PLAYER_UNIT_COUNT_TOP
