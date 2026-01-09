@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=24 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
-[ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/components/sorceress_button.tscn" id="3_37qwj"]
+[ext_resource type="Script" uid="uid://b1mlwx2ermeew" path="res://scripts/unit_button_controller.gd" id="3_2lf6f"]
+[ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/ui/sorceress_button.tscn" id="3_37qwj"]
 [ext_resource type="Script" uid="uid://di2vc54bfyhxx" path="res://scripts/health_bar_controller.gd" id="4_lakw3"]
 [ext_resource type="Script" uid="uid://cb83cnqrn1mdl" path="res://scripts/tower_controller.gd" id="10_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://bx7efghlv8838" path="res://scenes/components/tower.tscn" id="10_dss4m"]
@@ -76,14 +77,18 @@ rotation = 1.5707964
 scale = Vector2(2, 2)
 texture = ExtResource("20_7iits")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/SideBar"]
+[node name="UnitButtonController" type="VBoxContainer" parent="GUI/SideBar" node_paths=PackedStringArray("unit_spawner", "tower_buttons", "gold_controller")]
 layout_mode = 0
 offset_left = -142.0
 offset_top = 26.0
 offset_right = -17.0
 offset_bottom = 565.0
+script = ExtResource("3_2lf6f")
+unit_spawner = NodePath("../../../UnitSpawner")
+tower_buttons = NodePath("../../TowerButtons")
+gold_controller = NodePath("../../../GoldController")
 
-[node name="SorceressButton" parent="GUI/SideBar/VBoxContainer" instance=ExtResource("3_37qwj")]
+[node name="SorceressButton" parent="GUI/SideBar/UnitButtonController" instance=ExtResource("3_37qwj")]
 layout_mode = 2
 
 [node name="HealthBarController" type="Control" parent="GUI"]
@@ -226,7 +231,9 @@ position = Vector2(0, 300)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
 
-[node name="GoldController" parent="." instance=ExtResource("26_ts3gi")]
+[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_button_controller") instance=ExtResource("26_ts3gi")]
+enemy_controller = NodePath("../EnemyController")
+unit_button_controller = NodePath("../GUI/SideBar/UnitButtonController")
 
 [node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
 

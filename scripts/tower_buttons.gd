@@ -1,4 +1,4 @@
-extends Control
+class_name TowerButtons extends Control
 
 @onready var player_tower_mid_button: TextureButton = $PlayerTowerMidButton
 @onready var player_tower_top_button: TextureButton = $PlayerTowerTopButton

@@ -1,5 +1,5 @@
 # enemy_controller.gd
-extends Node2D
+class_name EnemyController extends Node2D
 
 @export var unit_spawner: UnitSpawner
 @onready var timer: Timer = $Timer
