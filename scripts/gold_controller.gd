@@ -1,9 +1,9 @@
 # gold_controller.gd
-class_name GoldController extends Node2D
+class_name GoldController extends Node
 
 @onready var gold_timer: Timer = $GoldTimer
 
-@export var enemy_controller: Node2D
+@export var enemy_controller: Node
 @export var unit_button_controller: UnitButtonController
 
 var player_gold: int = 0

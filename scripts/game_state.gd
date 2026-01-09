@@ -1,5 +1,5 @@
 # game_state.gd
-extends Node2D
+extends Node
 
 signal state_changed(new_state: GameState)
 signal global_health_changed(player_health, enemy_health)

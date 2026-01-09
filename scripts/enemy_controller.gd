@@ -1,10 +1,10 @@
 # enemy_controller.gd
-class_name EnemyController extends Node2D
+class_name EnemyController extends Node
 
 @export var unit_spawner: UnitSpawner
 @onready var timer: Timer = $Timer
 
-signal enemy_gold_spent(gpld_spent)
+signal enemy_gold_spent(gold_spent)
 
 var enemy_tick_rate: float = 2.0
 var prioritize_lane: int = 0 # top = 1, mid = 2, bot = 3

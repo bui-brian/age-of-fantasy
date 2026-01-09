@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8kop78orpdqb" path="res://scripts/enemy_controller.gd" id="1_7dwqs"]
 
-[node name="EnemyController" type="Node2D"]
+[node name="EnemyController" type="Node"]
 script = ExtResource("1_7dwqs")
 
 [node name="Timer" type="Timer" parent="."]

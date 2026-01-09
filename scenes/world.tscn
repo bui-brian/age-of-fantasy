@@ -36,31 +36,6 @@ script = ExtResource("1_k0juu")
 [node name="GUI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="TopBar" type="Control" parent="GUI"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -545.0
-offset_top = 359.0
-offset_right = -505.0
-offset_bottom = 399.0
-
-[node name="ColorRect" type="ColorRect" parent="GUI/TopBar"]
-layout_mode = 0
-offset_left = 81.0
-offset_right = 1050.0
-offset_bottom = 122.0
-color = Color(0.221302, 0.221302, 0.221302, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/TopBar"]
-layout_mode = 0
-offset_left = -200.0
-offset_top = -600.0
-offset_right = 155.0
-offset_bottom = -515.0
-rotation = 1.5707964
-scale = Vector2(2, 2)
-
 [node name="SideBar" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
@@ -178,36 +153,47 @@ offset_top = 450.0
 offset_right = 827.0
 offset_bottom = 490.0
 
+[node name="GameState" parent="." instance=ExtResource("30_navra")]
+
+[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_button_controller") instance=ExtResource("26_ts3gi")]
+enemy_controller = NodePath("../EnemyController")
+unit_button_controller = NodePath("../GUI/SideBar/UnitButtonController")
+
+[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
+unit_spawner = NodePath("../UnitSpawner")
+
+[node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
+
 [node name="ElvenLevel" type="Node2D" parent="."]
 
 [node name="ElvenBattleground" type="Sprite2D" parent="ElvenLevel"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_7iits")
 
-[node name="TowerController" type="Node2D" parent="ElvenLevel"]
+[node name="TowerController" type="Node2D" parent="."]
 script = ExtResource("10_7t5mc")
 
-[node name="PlayerTowerTop" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
+[node name="PlayerTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-500, -85)
 
-[node name="PlayerTowerMid" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
+[node name="PlayerTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-600, 65)
 current_lane = 1
 
-[node name="PlayerTowerBot" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
+[node name="PlayerTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-500, 215)
 current_lane = 2
 
-[node name="EnemyTowerTop" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
+[node name="EnemyTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(500, -85)
 faction = 1
 
-[node name="EnemyTowerMid" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
+[node name="EnemyTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(600, 65)
 faction = 1
 current_lane = 1
 
-[node name="EnemyTowerBot" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
+[node name="EnemyTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(500, 215)
 faction = 1
 current_lane = 2
@@ -230,17 +216,6 @@ position = Vector2(0, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
-
-[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_button_controller") instance=ExtResource("26_ts3gi")]
-enemy_controller = NodePath("../EnemyController")
-unit_button_controller = NodePath("../GUI/SideBar/UnitButtonController")
-
-[node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
-
-[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
-unit_spawner = NodePath("../UnitSpawner")
-
-[node name="GameState" parent="." instance=ExtResource("30_navra")]
 
 [node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_q5onr")

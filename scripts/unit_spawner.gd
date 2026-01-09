@@ -1,4 +1,4 @@
-class_name UnitSpawner extends Node2D
+class_name UnitSpawner extends Node
 
 const sorc_scene_path = "res://scenes/units/lightning_sorc.tscn"
 const knight_scene_path = "res://scenes/units/knight.tscn"
