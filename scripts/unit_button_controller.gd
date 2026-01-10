@@ -1,7 +1,7 @@
 # unit_button_controller.gd
 class_name UnitButtonController extends VBoxContainer
 
-@onready var sorceress_button: TextureButton = $SorceressButton
+@onready var sorceress_button: TextureButton = $SpellcasterButtons/SorceressButton
 
 @export var unit_spawner: UnitSpawner
 @export var tower_buttons: TowerButtons

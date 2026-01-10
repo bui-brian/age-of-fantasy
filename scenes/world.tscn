@@ -1,12 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=30 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Script" uid="uid://b1mlwx2ermeew" path="res://scripts/unit_button_controller.gd" id="3_2lf6f"]
 [ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/ui/sorceress_button.tscn" id="3_37qwj"]
 [ext_resource type="Script" uid="uid://di2vc54bfyhxx" path="res://scripts/health_bar_controller.gd" id="4_lakw3"]
+[ext_resource type="PackedScene" uid="uid://673p78aomm3o" path="res://scenes/ui/unit_button.tscn" id="5_oo54l"]
+[ext_resource type="Texture2D" uid="uid://dbk2f0lpe746p" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1158.png" id="5_xgqkh"]
+[ext_resource type="Script" uid="uid://ca2ludwe3htie" path="res://scripts/dark_magician_button.gd" id="6_kpybi"]
+[ext_resource type="Texture2D" uid="uid://38ffc4wnabrw" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1145.png" id="7_munwf"]
+[ext_resource type="Texture2D" uid="uid://5jcmm5nnowxy" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1137.png" id="9_ts3gi"]
 [ext_resource type="Script" uid="uid://cb83cnqrn1mdl" path="res://scripts/tower_controller.gd" id="10_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://bx7efghlv8838" path="res://scenes/components/tower.tscn" id="10_dss4m"]
 [ext_resource type="PackedScene" uid="uid://bb73en382ou55" path="res://scenes/ui/gold_ui.tscn" id="10_lakw3"]
+[ext_resource type="Script" uid="uid://bspj78aqby3mv" path="res://scripts/fire_mage_button.gd" id="10_munwf"]
 [ext_resource type="Script" uid="uid://cd6gawiwe3tew" path="res://scripts/gold_ui_controller.gd" id="10_pm21f"]
 [ext_resource type="AudioStream" uid="uid://gca5mbq56l2y" path="res://assets/music/new-gameplay-music.mp3" id="12_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
@@ -39,10 +45,10 @@ follow_viewport_enabled = true
 [node name="SideBar" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -800.0
-offset_top = -150.0
-offset_right = -800.0
-offset_bottom = -150.0
+offset_left = -775.0
+offset_top = -175.0
+offset_right = -775.0
+offset_bottom = -175.0
 
 [node name="TextureRect" type="TextureRect" parent="GUI/SideBar"]
 layout_mode = 1
@@ -63,8 +69,23 @@ unit_spawner = NodePath("../../../UnitSpawner")
 tower_buttons = NodePath("../../TowerButtons")
 gold_controller = NodePath("../../../GoldController")
 
-[node name="SorceressButton" parent="GUI/SideBar/UnitButtonController" instance=ExtResource("3_37qwj")]
+[node name="SpellcasterButtons" type="HBoxContainer" parent="GUI/SideBar/UnitButtonController"]
 layout_mode = 2
+alignment = 1
+
+[node name="SorceressButton" parent="GUI/SideBar/UnitButtonController/SpellcasterButtons" instance=ExtResource("3_37qwj")]
+layout_mode = 2
+texture_normal = ExtResource("5_xgqkh")
+
+[node name="DarkMagicianButton" parent="GUI/SideBar/UnitButtonController/SpellcasterButtons" instance=ExtResource("5_oo54l")]
+layout_mode = 2
+texture_normal = ExtResource("7_munwf")
+script = ExtResource("6_kpybi")
+
+[node name="FireMageButton" parent="GUI/SideBar/UnitButtonController/SpellcasterButtons" instance=ExtResource("5_oo54l")]
+layout_mode = 2
+texture_normal = ExtResource("9_ts3gi")
+script = ExtResource("10_munwf")
 
 [node name="HealthBarController" type="Control" parent="GUI"]
 layout_mode = 3
