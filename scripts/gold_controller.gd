@@ -4,7 +4,7 @@ class_name GoldController extends Node
 @onready var gold_timer: Timer = $GoldTimer
 
 @export var enemy_controller: Node
-@export var unit_button_controller: UnitButtonController
+@export var unit_spawner: UnitSpawner
 
 var player_gold: int = 0
 var enemy_gold: int = 0
@@ -12,7 +12,7 @@ var gold_per_tick: int = 15
 var gold_tick_rate: float = 1.0
 
 func _ready():
-	unit_button_controller.player_gold_spent.connect(_on_player_gold_spent)
+	unit_spawner.player_gold_spent.connect(_on_player_gold_spent)
 	enemy_controller.enemy_gold_spent.connect(_on_enemy_gold_spent)
 	
 	gold_timer.wait_time = gold_tick_rate

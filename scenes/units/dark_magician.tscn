@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuiadp8j72465"]
+[gd_scene load_steps=14 format=3 uid="uid://cuiadp8j72465"]
 
 [ext_resource type="Script" uid="uid://jlchiylyh8n1" path="res://scripts/dark_magician.gd" id="1_qmbjn"]
 [ext_resource type="Texture2D" uid="uid://bns1ve2xyv6pf" path="res://assets/units/Wanderer Magician/Attack_1.png" id="2_dkqwo"]
@@ -6,6 +6,46 @@
 [ext_resource type="PackedScene" uid="uid://ccold6nd2hi6x" path="res://scenes/components/hurtbox.tscn" id="3_mnf7t"]
 [ext_resource type="PackedScene" uid="uid://6hjv23dhua0r" path="res://scenes/components/hitbox.tscn" id="4_56cbk"]
 [ext_resource type="PackedScene" uid="uid://bq85vhmgmmlgn" path="res://scenes/components/health_bar.tscn" id="5_56cbk"]
+[ext_resource type="PackedScene" uid="uid://pyd0x5pbe8bl" path="res://scenes/components/health.tscn" id="7_10vbg"]
+
+[sub_resource type="Animation" id="Animation_mnf7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_uvx4l"]
 resource_name = "attack1"
@@ -46,45 +86,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_mnf7t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_56cbk"]
@@ -171,8 +172,11 @@ position = Vector2(15, 0)
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_fdwyu")
 
-[node name="HealthBar" parent="." instance=ExtResource("5_56cbk")]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_56cbk")]
 offset_left = -40.0
 offset_top = -25.0
 offset_right = 12.0
 offset_bottom = -15.0
+health = NodePath("../Health")
+
+[node name="Health" parent="." instance=ExtResource("7_10vbg")]

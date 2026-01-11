@@ -189,7 +189,7 @@ rotation = 1.5707964
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("20_7iits")
 
-[node name="UnitButtonController" type="VBoxContainer" parent="GUI/SideBar" node_paths=PackedStringArray("unit_spawner", "tower_buttons", "gold_controller")]
+[node name="UnitButtonController" type="VBoxContainer" parent="GUI/SideBar"]
 layout_mode = 0
 offset_left = -184.0
 offset_top = 28.999996
@@ -197,9 +197,6 @@ offset_right = -34.0
 offset_bottom = 512.0
 scale = Vector2(1.25, 1.25)
 script = ExtResource("3_2lf6f")
-unit_spawner = NodePath("../../../UnitSpawner")
-tower_buttons = NodePath("../../TowerButtons")
-gold_controller = NodePath("../../../GoldController")
 
 [node name="SpellcasterButtons" type="HBoxContainer" parent="GUI/SideBar/UnitButtonController"]
 layout_mode = 2
@@ -257,14 +254,17 @@ texture_hover = ExtResource("26_munwf")
 
 [node name="GameState" parent="." instance=ExtResource("30_navra")]
 
-[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_button_controller") instance=ExtResource("26_ts3gi")]
+[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_spawner") instance=ExtResource("26_ts3gi")]
 enemy_controller = NodePath("../EnemyController")
-unit_button_controller = NodePath("../GUI/SideBar/UnitButtonController")
+unit_spawner = NodePath("../UnitSpawner")
 
 [node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
 unit_spawner = NodePath("../UnitSpawner")
 
-[node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
+[node name="UnitSpawner" parent="." node_paths=PackedStringArray("button_controller", "tower_buttons", "gold_controller") instance=ExtResource("28_0nbtd")]
+button_controller = NodePath("../GUI/SideBar/UnitButtonController")
+tower_buttons = NodePath("../GUI/TowerButtons")
+gold_controller = NodePath("../GoldController")
 
 [node name="ElvenLevel" type="Node2D" parent="."]
 
