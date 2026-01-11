@@ -31,10 +31,10 @@
 [ext_resource type="PackedScene" uid="uid://cppmo7nbo2qoi" path="res://scenes/controllers/enemy_controller.tscn" id="29_37qwj"]
 [ext_resource type="PackedScene" uid="uid://3yxfrprhmkm7" path="res://scenes/game_state.tscn" id="30_navra"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf6f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iits"]
 size = Vector2(2000, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iits"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf6f"]
 size = Vector2(2000, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo54l"]
@@ -276,45 +276,46 @@ texture = ExtResource("17_7iits")
 script = ExtResource("10_7t5mc")
 
 [node name="PlayerTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(-500, -85)
+position = Vector2(-500, -120)
 
 [node name="PlayerTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(-600, 65)
+position = Vector2(-600, 30)
 current_lane = 1
 
 [node name="PlayerTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(-500, 215)
+position = Vector2(-500, 175)
 current_lane = 2
 
 [node name="EnemyTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(500, -85)
+position = Vector2(450, -120)
 faction = 1
 
 [node name="EnemyTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(600, 65)
+position = Vector2(600, 30)
 faction = 1
 current_lane = 1
 
 [node name="EnemyTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(500, 215)
+position = Vector2(450, 175)
 faction = 1
 current_lane = 2
 
 [node name="Lanes" type="Node2D" parent="."]
 
-[node name="MiddleLane" type="StaticBody2D" parent="Lanes"]
-position = Vector2(0, 150)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/MiddleLane"]
-shape = SubResource("RectangleShape2D_2lf6f")
-
 [node name="TopLane" type="StaticBody2D" parent="Lanes"]
+position = Vector2(0, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/TopLane"]
 shape = SubResource("RectangleShape2D_7iits")
 
+[node name="MiddleLane" type="StaticBody2D" parent="Lanes"]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/MiddleLane"]
+shape = SubResource("RectangleShape2D_2lf6f")
+
 [node name="BottomLane" type="StaticBody2D" parent="Lanes"]
-position = Vector2(0, 300)
+position = Vector2(0, 350)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
