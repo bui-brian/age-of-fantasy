@@ -8,7 +8,7 @@ var hurtbox_check
 var friendly_check
 
 func enter() -> void:
-	move_speed = 50
+	move_speed = 100
 	super()
 
 func process_frame(delta: float):
@@ -31,7 +31,7 @@ func attack_detection() -> void:
 	if parent.attack_raycast.is_colliding():
 		hurtbox_check = parent.attack_raycast.get_collider()
 	
-	if !hurtbox_check:
+	if !hurtbox_check or (hurtbox_check is not Hurtbox):
 		return
 	
 	# match self depending on the faction
