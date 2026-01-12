@@ -17,7 +17,8 @@ var top_toggle: bool = false
 var bot_toggle: bool = false
 
 var spawn_button_cooldown: float = 2.0
-var button_available: bool = true
+var sorceress_available: bool = true
+var magician_available: bool = true
 var unit_gold_cost: int = 0
 var scene_str: String
 
@@ -47,24 +48,17 @@ func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool) -> void:
 	top_toggle = TOP_TOGGLE
 	bot_toggle = BOT_TOGGLE
 
-func _on_unit_button_pressed(gold_cost, unit_scene) -> void:
+func _on_unit_button_pressed(gold_cost, unit_scene, BUTTON_AVAILABLE) -> void:
 	unit_gold_cost = gold_cost
 	scene_str = unit_scene
-	if button_controller.sorceress_button.button_available:
-		spawn_player_unit()
-	if button_controller.dark_magician_button.button_available:
+	if BUTTON_AVAILABLE:
 		spawn_player_unit()
 
 func spawn_player_unit() -> void:
-	if GameState.player_gold < unit_gold_cost:
-		return
-	
-	#button_controller.sorceress_button.set_cooldown_timer()
-
 	# If toggles are on, spawn in respective lane
 	if top_toggle:
 		var unit_scene = UNIT_SCENES[scene_str].instantiate()
-		var unit_instance = spawn_unit(unit_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -100), Unit.UnitLane.TOP)
+		var unit_instance = spawn_unit(unit_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-500, -200), Unit.UnitLane.TOP)
 		spawn_unit_lane(unit_instance)
 		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
 		player_gold_spent.emit(50)
