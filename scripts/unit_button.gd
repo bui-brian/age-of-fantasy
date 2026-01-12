@@ -31,3 +31,4 @@ func _reset_cooldown_timer() -> void:
 
 func _on_pressed() -> void:
 	unit_button_pressed.emit(gold_cost, unit_scene)
+	set_cooldown_timer()

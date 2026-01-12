@@ -50,7 +50,7 @@ func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool) -> void:
 func _on_unit_button_pressed(gold_cost, unit_scene) -> void:
 	unit_gold_cost = gold_cost
 	scene_str = unit_scene
-	if button_controller.dark_magician_button.button_available:
+	if button_controller.sorceress_button.button_available:
 		spawn_player_unit()
 	if button_controller.dark_magician_button.button_available:
 		spawn_player_unit()
