@@ -1,12 +1,15 @@
 # unit.gd
 class_name Unit extends CharacterBody2D
 
-@onready var state_machine: Node = $state_machine
+@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_raycast: RayCast2D = $AttackRaycast
 @onready var friendly_raycast: RayCast2D = $FriendlyRaycast
 @onready var hitbox: Hitbox = $Hitbox
+@onready var hurtbox: Hurtbox = $Hurtbox
+@onready var health: Health = $Health
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var state_machine: Node = $state_machine
 
 enum Faction {
 	PLAYER,
