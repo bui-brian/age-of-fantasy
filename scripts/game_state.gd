@@ -4,6 +4,7 @@ extends Node
 signal state_changed(new_state: GameState)
 signal global_health_changed(player_health, enemy_health)
 signal global_gold_changed(player_gold, enemy_gold)
+signal global_health_depleted
 
 var current_state: GameState
 
@@ -31,11 +32,15 @@ func set_player_health(PLAYER_HEALTH):
 	player_current_health = PLAYER_HEALTH
 	state_changed.emit(self)
 	global_health_changed.emit(player_current_health, enemy_current_health)
+	if player_current_health <= 0:
+		global_health_depleted.emit()
 
 func set_enemy_health(ENEMY_HEALTH):
 	enemy_current_health = ENEMY_HEALTH
 	state_changed.emit(self)
 	global_health_changed.emit(player_current_health, enemy_current_health)
+	if enemy_current_health <= 0:
+		global_health_depleted.emit()
 
 func set_gold(PLAYER_GOLD, ENEMY_GOLD):
 	player_gold = PLAYER_GOLD
