@@ -1,8 +1,15 @@
 extends Node2D
 
+@onready var title_screen: Control = %TitleScreen
+@onready var end_screen: Control = %EndScreen
+
 func _ready() -> void:
-	%TitleScreen.hide()
-	%EndScreen.hide()
+	if title_screen.play_button.pressed:
+		title_screen.hide()
+	title_screen.show()
+	end_screen.hide()
+	
+	Engine.time_scale = 3.0
 
 func _on_end_screen() -> void:
-	%EndScreen.show()
+	end_screen.show()

@@ -257,8 +257,9 @@ texture_hover = ExtResource("26_munwf")
 [node name="TitleScreen" parent="GUI" instance=ExtResource("23_fh13f")]
 unique_name_in_owner = true
 
-[node name="EndScreen" parent="GUI" instance=ExtResource("24_rup4s")]
+[node name="EndScreen" parent="GUI" node_paths=PackedStringArray("title_screen") instance=ExtResource("24_rup4s")]
 unique_name_in_owner = true
+title_screen = NodePath("../TitleScreen")
 
 [node name="GameState" parent="." instance=ExtResource("30_navra")]
 
