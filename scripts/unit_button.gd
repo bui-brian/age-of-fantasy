@@ -5,7 +5,7 @@ signal unit_button_pressed(gold_cost, scene_str, button_available)
 @onready var label: Label = $Label
 @onready var timer: Timer = $Timer
 
-var spawn_button_cooldown: float = 1.5
+var spawn_button_cooldown: float = 2.5
 var button_available: bool = true
 var gold_cost: int = 50
 var unit_scene: String = ""
@@ -21,14 +21,12 @@ func set_cooldown_timer() -> void:
 	button_available = false
 	timer.one_shot = true
 	timer.wait_time = spawn_button_cooldown
-	print("Start timer...")
 	timer.start()
 
 func _reset_cooldown_timer() -> void:
 	if button_available:
 		return
 	button_available = true
-	print("...Timer reset")
 
 func _on_pressed() -> void:
 	if GameState.player_gold <= gold_cost:

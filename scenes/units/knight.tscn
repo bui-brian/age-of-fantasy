@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8oi42db750ml"]
+[gd_scene load_steps=21 format=3 uid="uid://c8oi42db750ml"]
 
 [ext_resource type="Script" uid="uid://71uui2bf4hlp" path="res://scripts/knight.gd" id="1_8k1n4"]
 [ext_resource type="AudioStream" uid="uid://jr531qca7e02" path="res://assets/sfx/knight-sword-swing.wav" id="3_bjcoa"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://6hjv23dhua0r" path="res://scenes/components/hitbox.tscn" id="6_iqpde"]
 [ext_resource type="PackedScene" uid="uid://bq85vhmgmmlgn" path="res://scenes/components/health_bar.tscn" id="8_gk0fs"]
 [ext_resource type="PackedScene" uid="uid://pyd0x5pbe8bl" path="res://scenes/components/health.tscn" id="10_0puac"]
+[ext_resource type="PackedScene" uid="uid://d11m51wbw54gb" path="res://scenes/components/state_machine.tscn" id="11_vbg0o"]
 
 [sub_resource type="Animation" id="Animation_iqpde"]
 length = 0.001
@@ -372,13 +373,18 @@ libraries = {
 }
 autoplay = "run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 scale = Vector2(2.5, 3.5)
 shape = SubResource("RectangleShape2D_c8pb6")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, 3)
+[node name="AttackRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(42, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="FriendlyRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, 15)
 target_position = Vector2(42, 0)
 
 [node name="Hitbox" parent="." instance=ExtResource("6_iqpde")]
@@ -390,12 +396,15 @@ monitoring = false
 shape = SubResource("CapsuleShape2D_gk0fs")
 disabled = true
 
-[node name="Hurtbox" parent="." instance=ExtResource("5_0jdqw")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_0jdqw")]
 position = Vector2(0, 8)
 scale = Vector2(2, 3.5)
+health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_5f6yi")
+
+[node name="Health" parent="." instance=ExtResource("10_0puac")]
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("8_gk0fs")]
 offset_left = -26.0
@@ -407,4 +416,4 @@ health = NodePath("../Health")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
-[node name="Health" parent="." instance=ExtResource("10_0puac")]
+[node name="state_machine" parent="." instance=ExtResource("11_vbg0o")]

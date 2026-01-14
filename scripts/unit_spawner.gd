@@ -25,6 +25,8 @@ var scene_str: String
 func _ready() -> void:
 	button_controller.sorceress_button.unit_button_pressed.connect(_on_unit_button_pressed)
 	button_controller.dark_magician_button.unit_button_pressed.connect(_on_unit_button_pressed)
+	button_controller.fire_mage_button.unit_button_pressed.connect(_on_unit_button_pressed)
+	
 	tower_buttons.toggled.connect(_set_toggled)
 
 func spawn_unit(unit_scene: Variant, unit_group: Unit.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Unit.UnitLane):
