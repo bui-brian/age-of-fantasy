@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy5odb3aaihbn"]
+
+[ext_resource type="FontFile" uid="uid://b6qw7m63cxa34" path="res://assets/ui/fonts/ByteBounce.ttf" id="1_4ttpn"]
+[ext_resource type="Script" uid="uid://bkkxdpvw1goxx" path="res://scripts/gui/end_screen.gd" id="1_n8r4t"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n8r4t")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 317.0
+offset_right = 192.0
+offset_bottom = 405.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_4ttpn")
+theme_override_font_sizes/font_size = 128
+text = "You Win!"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -83.5
+offset_right = 91.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PlayAgainButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play Again"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit Game"

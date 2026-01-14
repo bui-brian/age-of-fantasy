@@ -5,12 +5,15 @@ extends Node2D
 signal health_depleted
 signal health_changed(cur_health: int)
 
+@onready var end_screen: Control = $"../../../GUI/EndScreen"
+
 @export var current_max_health: int = 100
 
 var current_health: int = 0: set = _on_health_set
 
 func _ready() -> void:
 	health_depleted.connect(_on_health_depleted)
+	health_depleted.connect(_on_global_health_depleted)
 
 func _init() -> void:
 	setup_stats.call_deferred()
@@ -24,6 +27,18 @@ func _on_health_set(new_value: int) -> void:
 	
 	if current_health <= 0:
 		health_depleted.emit()
+
+func _on_global_health_depleted() -> void:
+	if not Tower:
+		return
+	
+	if GameState.player_current_health <= 0:
+		end_screen.label.text = "You lose!"
+		end_screen.show() 
+	if GameState.enemy_current_health <= 0:
+		end_screen.label.text = "You win!"
+		end_screen.show()
+	
 
 func _on_health_depleted() -> void:
 	if current_health > 0 or owner is Tower:

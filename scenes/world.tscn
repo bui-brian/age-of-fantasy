@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=36 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://vc5vnyw76cm8" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (4).png" id="2_0nbtd"]
@@ -23,7 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
 [ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
+[ext_resource type="PackedScene" uid="uid://drfgmh133g4c1" path="res://scenes/ui/title_screen.tscn" id="23_fh13f"]
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
+[ext_resource type="PackedScene" uid="uid://cy5odb3aaihbn" path="res://scenes/ui/end_screen.tscn" id="24_rup4s"]
 [ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/gui/buttons/tower_buttons.gd" id="25_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://d4elu0o7mxx4a" path="res://assets/ui/Edinnu_UI_asset_pack/Target/Target (10).png" id="26_munwf"]
 [ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/controllers/gold_controller.tscn" id="26_ts3gi"]
@@ -251,6 +253,12 @@ offset_right = -155.0
 offset_bottom = 90.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
+
+[node name="TitleScreen" parent="GUI" instance=ExtResource("23_fh13f")]
+unique_name_in_owner = true
+
+[node name="EndScreen" parent="GUI" instance=ExtResource("24_rup4s")]
+unique_name_in_owner = true
 
 [node name="GameState" parent="." instance=ExtResource("30_navra")]
 
