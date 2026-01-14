@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bx7efghlv8838"]
 
 [ext_resource type="Texture2D" uid="uid://ddeyiiigp44ep" path="res://assets/level/Mage_Towers_Pixel_Art_for_Tower_Defense/2 Idle/7.png" id="1_st5bg"]
-[ext_resource type="Script" uid="uid://brgcxoq04ani6" path="res://scripts/tower.gd" id="2_r424i"]
+[ext_resource type="Script" uid="uid://brgcxoq04ani6" path="res://scripts/components/tower.gd" id="2_r424i"]
 [ext_resource type="PackedScene" uid="uid://ccold6nd2hi6x" path="res://scenes/components/hurtbox.tscn" id="3_4pukl"]
 [ext_resource type="PackedScene" uid="uid://pyd0x5pbe8bl" path="res://scenes/components/health.tscn" id="4_oev03"]
 [ext_resource type="PackedScene" uid="uid://bq85vhmgmmlgn" path="res://scenes/components/health_bar.tscn" id="5_4pukl"]

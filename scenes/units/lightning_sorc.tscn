@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c2i75voiued42"]
 
-[ext_resource type="Script" uid="uid://bca0gaa3mcr70" path="res://scripts/lightning_sorc.gd" id="1_kxtcu"]
+[ext_resource type="Script" uid="uid://bca0gaa3mcr70" path="res://scripts/units/lightning_sorc.gd" id="1_kxtcu"]
 [ext_resource type="Texture2D" uid="uid://bgamkb4qrrafx" path="res://assets/units/Lightning Mage/Idle.png" id="2_8n5g7"]
 [ext_resource type="Texture2D" uid="uid://bd0byamee3ifh" path="res://assets/units/Lightning Mage/Run.png" id="3_tjpgm"]
 [ext_resource type="Texture2D" uid="uid://dqbhbphd31apl" path="res://assets/units/Lightning Mage/Attack_1.png" id="4_j88mp"]

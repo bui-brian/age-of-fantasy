@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://c8oi42db750ml"]
 
-[ext_resource type="Script" uid="uid://71uui2bf4hlp" path="res://scripts/knight.gd" id="1_8k1n4"]
+[ext_resource type="Script" uid="uid://71uui2bf4hlp" path="res://scripts/units/knight.gd" id="1_8k1n4"]
 [ext_resource type="AudioStream" uid="uid://jr531qca7e02" path="res://assets/sfx/knight-sword-swing.wav" id="3_bjcoa"]
 [ext_resource type="Texture2D" uid="uid://cbgf15up1t3ri" path="res://assets/units/Knight/Knight_1/Dead.png" id="4_0jdqw"]
 [ext_resource type="Texture2D" uid="uid://csnihr4rapihm" path="res://assets/units/Knight/Knight_1/Attack 1.png" id="4_5f6yi"]

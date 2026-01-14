@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://cuiadp8j72465"]
 
-[ext_resource type="Script" uid="uid://jlchiylyh8n1" path="res://scripts/dark_magician.gd" id="1_qmbjn"]
+[ext_resource type="Script" uid="uid://jlchiylyh8n1" path="res://scripts/units/dark_magician.gd" id="1_qmbjn"]
 [ext_resource type="Texture2D" uid="uid://bns1ve2xyv6pf" path="res://assets/units/Wanderer Magician/Attack_1.png" id="2_dkqwo"]
 [ext_resource type="Texture2D" uid="uid://wgwq0qwuaqqa" path="res://assets/units/Wanderer Magician/Run.png" id="3_fdwyu"]
 [ext_resource type="PackedScene" uid="uid://ccold6nd2hi6x" path="res://scenes/components/hurtbox.tscn" id="3_mnf7t"]

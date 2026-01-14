@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jfxhl0xhfhmq"]
 
-[ext_resource type="Script" uid="uid://b8vn8in2alcmm" path="res://scripts/gold_controller.gd" id="1_8p37v"]
+[ext_resource type="Script" uid="uid://b8vn8in2alcmm" path="res://scripts/controllers/gold_controller.gd" id="1_8p37v"]
 
 [node name="GoldController" type="Node"]
 script = ExtResource("1_8p37v")
