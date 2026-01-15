@@ -39,6 +39,8 @@ func enemy_ai_tick():
 			elif GameState.player_unit_count_top == 0 and GameState.enemy_gold >= 50:
 				unit_spawner.full_spawn("knight_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Util.Lane.TOP)
 				enemy_gold_spent.emit(50)
+			
+			GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
 		2: # Mid lane prio
 			# If there are more player units than enemy units
 			if GameState.player_unit_count_mid > GameState.enemy_unit_count_mid and GameState.enemy_gold >= 50:
@@ -49,6 +51,8 @@ func enemy_ai_tick():
 			elif GameState.player_unit_count_mid == 0 and GameState.enemy_gold >= 50:
 				unit_spawner.full_spawn("knight_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50), Util.Lane.MID)
 				enemy_gold_spent.emit(50)
+			
+			GameState.set_enemy_count(GameState.enemy_unit_count_top, GameState.enemy_unit_count_mid+1, GameState.enemy_unit_count_bot)
 		3: # Bot lane prio
 			if GameState.player_unit_count_bot > GameState.enemy_unit_count_bot and GameState.enemy_gold >= 50:
 				unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250), Util.Lane.BOT)
@@ -58,5 +62,7 @@ func enemy_ai_tick():
 			elif GameState.player_unit_count_bot == 0 and GameState.enemy_gold >= 50:
 				unit_spawner.full_spawn("knight_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250), Util.Lane.BOT)
 				enemy_gold_spent.emit(50)
+			
+			GameState.set_enemy_count(GameState.enemy_unit_count_top, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot+1)
 	
 	prioritize_lane = 0

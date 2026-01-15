@@ -62,15 +62,17 @@ func _on_unit_button_pressed(gold_cost, unit_scene, BUTTON_AVAILABLE) -> void:
 	if not BUTTON_AVAILABLE:
 		return
 	
-	if top_toggle:
+	if top_toggle and GameState.player_gold >= gold_cost:
 		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -200), Util.Lane.TOP)
 		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
 		player_gold_spent.emit(50)
-	if mid_toggle:
+	
+	if mid_toggle and GameState.player_gold >= gold_cost:
 		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50), Util.Lane.MID)
 		GameState.set_player_count(GameState.player_unit_count_mid+1, GameState.player_unit_count_top, GameState.player_unit_count_bot)
 		player_gold_spent.emit(50)
-	if bot_toggle:
+	
+	if bot_toggle and GameState.player_gold >= gold_cost:
 		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250), Util.Lane.BOT)
 		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, GameState.player_unit_count_bot+1)
 		player_gold_spent.emit(50)

@@ -52,3 +52,8 @@ func set_player_count(PLAYER_UNIT_COUNT_MID, PLAYER_UNIT_COUNT_TOP, PLAYER_UNIT_
 	player_unit_count_top = PLAYER_UNIT_COUNT_TOP
 	player_unit_count_mid = PLAYER_UNIT_COUNT_MID
 	player_unit_count_bot = PLAYER_UNIT_COUNT_BOT
+
+func set_enemy_count(ENEMY_UNIT_COUNT_TOP, ENEMY_UNIT_COUNT_MID, ENEMY_UNIT_COUNT_BOT):
+	enemy_unit_count_top = ENEMY_UNIT_COUNT_TOP
+	enemy_unit_count_mid = ENEMY_UNIT_COUNT_MID
+	enemy_unit_count_bot = ENEMY_UNIT_COUNT_BOT
