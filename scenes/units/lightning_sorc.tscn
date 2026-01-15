@@ -206,7 +206,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_tjpgm"]
 resource_name = "death"
-length = 0.9
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -238,7 +238,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
@@ -475,7 +475,7 @@ shape = SubResource("RectangleShape2D_8ek24")
 
 [node name="AttackRaycast" type="RayCast2D" parent="."]
 position = Vector2(-5, 15)
-target_position = Vector2(100, 0)
+target_position = Vector2(50, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -493,11 +493,10 @@ shape = SubResource("RectangleShape2D_cac0x")
 
 [node name="Hitbox" parent="." instance=ExtResource("8_hbmdm")]
 position = Vector2(70, 15)
-scale = Vector2(5, 1.5)
+scale = Vector2(6, 1.5)
 monitoring = false
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-2.1999998, 0)
 scale = Vector2(1.0000002, 1)
 shape = SubResource("RectangleShape2D_gog5y")
 disabled = true
@@ -515,3 +514,4 @@ bus = &"SFX"
 [node name="state_machine" parent="." instance=ExtResource("11_tjpgm")]
 
 [node name="Health" parent="." instance=ExtResource("12_j88mp")]
+current_max_health = null

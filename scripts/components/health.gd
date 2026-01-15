@@ -30,17 +30,17 @@ func _on_health_depleted() -> void:
 		return
 		
 	match owner.current_lane:
-		Unit.UnitLane.TOP:
+		Util.Lane.TOP:
 			if GameState.player_unit_count_top < 1:
 				GameState.set_player_count(GameState.player_unit_count_mid, 0, GameState.player_unit_count_bot)
 			else:
 				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top-1, GameState.player_unit_count_bot)
-		Unit.UnitLane.MID:
+		Util.Lane.MID:
 			if GameState.player_unit_count_mid < 1:
 				GameState.set_player_count(0, GameState.player_unit_count_top, GameState.player_unit_count_bot)
 			else:
 				GameState.set_player_count(GameState.player_unit_count_mid-1, GameState.player_unit_count_top, GameState.player_unit_count_bot)
-		Unit.UnitLane.BOT:
+		Util.Lane.BOT:
 			if GameState.player_unit_count_bot < 1:
 				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, 0)
 			else:

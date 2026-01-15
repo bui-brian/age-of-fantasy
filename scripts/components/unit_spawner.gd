@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 	tower_buttons.toggled.connect(_set_toggled)
 
-func spawn_unit(unit_scene: Variant, unit_group: Unit.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Unit.UnitLane):
+func spawn_unit(unit_scene: Variant, unit_group: Util.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Util.Lane):
 	var temp_scene = unit_scene
 	
 	temp_scene.faction = unit_group
@@ -44,6 +44,11 @@ func spawn_unit(unit_scene: Variant, unit_group: Unit.Faction, unit_direction: V
 func spawn_unit_lane(unit) -> void:
 	get_tree().current_scene.add_child(unit)
 
+func full_spawn(unit_str: String, unit_group: Util.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Util.Lane):
+		var unit_scene = UNIT_SCENES[unit_str].instantiate()
+		var unit_instance = spawn_unit(unit_scene, unit_group, unit_direction, unit_position, unit_lane)
+		spawn_unit_lane(unit_instance)
+
 # --- Button handlers ---
 func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool) -> void:
 	mid_toggle = MID_TOGGLE
@@ -53,26 +58,19 @@ func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool) -> void:
 func _on_unit_button_pressed(gold_cost, unit_scene, BUTTON_AVAILABLE) -> void:
 	unit_gold_cost = gold_cost
 	scene_str = unit_scene
-	if BUTTON_AVAILABLE:
-		spawn_player_unit()
-
-func spawn_player_unit() -> void:
-	# If toggles are on, spawn in respective lane
+	
+	if not BUTTON_AVAILABLE:
+		return
+	
 	if top_toggle:
-		var unit_scene = UNIT_SCENES[scene_str].instantiate()
-		var unit_instance = spawn_unit(unit_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-500, -200), Unit.UnitLane.TOP)
-		spawn_unit_lane(unit_instance)
+		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -200), Util.Lane.TOP)
 		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
 		player_gold_spent.emit(50)
 	if mid_toggle:
-		var unit_scene = UNIT_SCENES[scene_str].instantiate()
-		var unit_instance = spawn_unit(unit_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50), Unit.UnitLane.MID)
-		spawn_unit_lane(unit_instance)
+		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50), Util.Lane.MID)
 		GameState.set_player_count(GameState.player_unit_count_mid+1, GameState.player_unit_count_top, GameState.player_unit_count_bot)
 		player_gold_spent.emit(50)
 	if bot_toggle:
-		var unit_scene = UNIT_SCENES[scene_str].instantiate()
-		var unit_instance = spawn_unit(unit_scene, Unit.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250), Unit.UnitLane.BOT)
-		spawn_unit_lane(unit_instance)
+		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250), Util.Lane.BOT)
 		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, GameState.player_unit_count_bot+1)
 		player_gold_spent.emit(50)
