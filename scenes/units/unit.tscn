@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkgsoi43djtvy"]
+[gd_scene load_steps=6 format=3 uid="uid://dkgsoi43djtvy"]
 
-[ext_resource type="Script" uid="uid://bi83e6fmn5sl6" path="res://scripts/unit.gd" id="1_6e3tn"]
+[ext_resource type="Script" uid="uid://bi83e6fmn5sl6" path="res://scripts/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="PackedScene" uid="uid://6hjv23dhua0r" path="res://scenes/components/hitbox.tscn" id="2_cx6aj"]
 [ext_resource type="PackedScene" uid="uid://d11m51wbw54gb" path="res://scenes/components/state_machine.tscn" id="3_cx6aj"]
 [ext_resource type="PackedScene" uid="uid://pyd0x5pbe8bl" path="res://scenes/components/health.tscn" id="4_6k8ya"]
+[ext_resource type="PackedScene" uid="uid://ccold6nd2hi6x" path="res://scenes/components/hurtbox.tscn" id="5_mgebg"]
 
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_6e3tn")
@@ -11,6 +12,8 @@ script = ExtResource("1_6e3tn")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
 
 [node name="AttackRaycast" type="RayCast2D" parent="."]
 collide_with_areas = true
@@ -20,6 +23,9 @@ collide_with_bodies = false
 
 [node name="Hitbox" parent="." instance=ExtResource("2_cx6aj")]
 
-[node name="state_machine" parent="." instance=ExtResource("3_cx6aj")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_mgebg")]
+health = NodePath("../Health")
 
 [node name="Health" parent="." instance=ExtResource("4_6k8ya")]
+
+[node name="state_machine" parent="." instance=ExtResource("3_cx6aj")]

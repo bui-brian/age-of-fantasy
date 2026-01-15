@@ -1,27 +1,42 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5qw442h2j58x"]
+[gd_scene load_steps=36 format=3 uid="uid://c5qw442h2j58x"]
 
 [ext_resource type="Script" uid="uid://chfefcgctxgfs" path="res://scripts/world.gd" id="1_k0juu"]
-[ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/components/sorceress_button.tscn" id="3_37qwj"]
-[ext_resource type="Script" uid="uid://di2vc54bfyhxx" path="res://scripts/health_bar_controller.gd" id="4_lakw3"]
-[ext_resource type="Script" uid="uid://cb83cnqrn1mdl" path="res://scripts/tower_controller.gd" id="10_7t5mc"]
+[ext_resource type="Texture2D" uid="uid://vc5vnyw76cm8" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (4).png" id="2_0nbtd"]
+[ext_resource type="Script" uid="uid://b1mlwx2ermeew" path="res://scripts/controllers/unit_button_controller.gd" id="3_2lf6f"]
+[ext_resource type="PackedScene" uid="uid://b5diia6ysgo7f" path="res://scenes/ui/sorceress_button.tscn" id="3_37qwj"]
+[ext_resource type="Texture2D" uid="uid://dvy0x0mn3c7af" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HeartIcons_32x32.png" id="3_navra"]
+[ext_resource type="Texture2D" uid="uid://carijhotwgs74" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1098.png" id="4_37qwj"]
+[ext_resource type="Script" uid="uid://di2vc54bfyhxx" path="res://scripts/controllers/health_bar_controller.gd" id="4_lakw3"]
+[ext_resource type="Texture2D" uid="uid://n3so2wscehfu" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1100.png" id="5_navra"]
+[ext_resource type="PackedScene" uid="uid://673p78aomm3o" path="res://scenes/ui/unit_button.tscn" id="5_oo54l"]
+[ext_resource type="Texture2D" uid="uid://dbk2f0lpe746p" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1158.png" id="5_xgqkh"]
+[ext_resource type="Script" uid="uid://ca2ludwe3htie" path="res://scripts/gui/buttons/dark_magician_button.gd" id="6_kpybi"]
+[ext_resource type="Texture2D" uid="uid://38ffc4wnabrw" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1145.png" id="7_munwf"]
+[ext_resource type="Texture2D" uid="uid://5jcmm5nnowxy" path="res://assets/ui/Free - Raven Fantasy Icons/Separated Files/32x32/fb1137.png" id="9_ts3gi"]
+[ext_resource type="Script" uid="uid://cb83cnqrn1mdl" path="res://scripts/controllers/tower_controller.gd" id="10_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://bx7efghlv8838" path="res://scenes/components/tower.tscn" id="10_dss4m"]
+[ext_resource type="PackedScene" uid="uid://bb73en382ou55" path="res://scenes/ui/gold_ui.tscn" id="10_lakw3"]
+[ext_resource type="Script" uid="uid://bspj78aqby3mv" path="res://scripts/gui/buttons/fire_mage_button.gd" id="10_munwf"]
+[ext_resource type="Script" uid="uid://cd6gawiwe3tew" path="res://scripts/controllers/gold_ui_controller.gd" id="10_pm21f"]
 [ext_resource type="AudioStream" uid="uid://gca5mbq56l2y" path="res://assets/music/new-gameplay-music.mp3" id="12_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
 [ext_resource type="Texture2D" uid="uid://bt7h26bkn1fye" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png" id="23_ctatt"]
+[ext_resource type="PackedScene" uid="uid://drfgmh133g4c1" path="res://scenes/ui/title_screen.tscn" id="23_fh13f"]
 [ext_resource type="Texture2D" uid="uid://ctau8isikuftv" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png" id="24_ctatt"]
-[ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/tower_buttons.gd" id="25_xgqkh"]
+[ext_resource type="PackedScene" uid="uid://cy5odb3aaihbn" path="res://scenes/ui/end_screen.tscn" id="24_rup4s"]
+[ext_resource type="Script" uid="uid://dlmov35wy0lls" path="res://scripts/gui/buttons/tower_buttons.gd" id="25_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://d4elu0o7mxx4a" path="res://assets/ui/Edinnu_UI_asset_pack/Target/Target (10).png" id="26_munwf"]
 [ext_resource type="PackedScene" uid="uid://jfxhl0xhfhmq" path="res://scenes/controllers/gold_controller.tscn" id="26_ts3gi"]
 [ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="28_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://cppmo7nbo2qoi" path="res://scenes/controllers/enemy_controller.tscn" id="29_37qwj"]
 [ext_resource type="PackedScene" uid="uid://3yxfrprhmkm7" path="res://scenes/game_state.tscn" id="30_navra"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf6f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iits"]
 size = Vector2(2000, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iits"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf6f"]
 size = Vector2(2000, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo54l"]
@@ -33,87 +48,176 @@ script = ExtResource("1_k0juu")
 [node name="GUI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="TopBar" type="Control" parent="GUI"]
-visible = false
+[node name="TopUIBar" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -545.0
-offset_top = 359.0
-offset_right = -505.0
-offset_bottom = 399.0
+offset_left = -775.0
+offset_top = -500.0
+offset_right = -735.0
+offset_bottom = -460.0
 
-[node name="ColorRect" type="ColorRect" parent="GUI/TopBar"]
-layout_mode = 0
-offset_left = 81.0
-offset_right = 1050.0
-offset_bottom = 122.0
-color = Color(0.221302, 0.221302, 0.221302, 1)
+[node name="PlayerUI" type="Control" parent="GUI/TopUIBar"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/TopBar"]
+[node name="PlayerUIBackdrop" type="TextureRect" parent="GUI/TopUIBar/PlayerUI"]
 layout_mode = 0
-offset_left = -200.0
-offset_top = -600.0
-offset_right = 155.0
-offset_bottom = -515.0
-rotation = 1.5707964
-scale = Vector2(2, 2)
+offset_right = 104.0
+offset_bottom = 40.0
+scale = Vector2(6, 4)
+texture = ExtResource("2_0nbtd")
+
+[node name="PlayerHeart" type="TextureRect" parent="GUI/TopUIBar/PlayerUI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 70.0
+offset_bottom = 65.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_navra")
+expand_mode = 4
+
+[node name="BuffContainer" type="HBoxContainer" parent="GUI/TopUIBar/PlayerUI"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 90.0
+offset_right = 240.0
+offset_bottom = 130.0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = 16
+
+[node name="Buff1" type="TextureRect" parent="GUI/TopUIBar/PlayerUI/BuffContainer"]
+layout_mode = 2
+texture = ExtResource("4_37qwj")
+expand_mode = 3
+
+[node name="Buff2" type="TextureRect" parent="GUI/TopUIBar/PlayerUI/BuffContainer"]
+layout_mode = 2
+texture = ExtResource("5_navra")
+expand_mode = 3
+
+[node name="Buff3" type="TextureRect" parent="GUI/TopUIBar/PlayerUI/BuffContainer"]
+layout_mode = 2
+
+[node name="EnemyUI" type="Control" parent="GUI/TopUIBar"]
+anchors_preset = 0
+offset_left = 915.0
+offset_right = 955.0
+offset_bottom = 40.0
+
+[node name="PlayerUIBackdrop2" type="TextureRect" parent="GUI/TopUIBar/EnemyUI"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 40.0
+scale = Vector2(6, 4)
+texture = ExtResource("2_0nbtd")
+
+[node name="EnemyHeart" type="TextureRect" parent="GUI/TopUIBar/EnemyUI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 70.0
+offset_bottom = 65.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_navra")
+expand_mode = 4
+
+[node name="GoldUIController" type="Control" parent="GUI/TopUIBar"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_pm21f")
+
+[node name="PlayerGoldUI" parent="GUI/TopUIBar/GoldUIController" instance=ExtResource("10_lakw3")]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 90.0
+offset_right = 112.0
+offset_bottom = 130.0
+scale = Vector2(1.5, 1.5)
+
+[node name="EnemyGoldUI" parent="GUI/TopUIBar/GoldUIController" instance=ExtResource("10_lakw3")]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 90.0
+offset_right = 1027.0
+offset_bottom = 130.0
+scale = Vector2(1.5, 1.5)
+
+[node name="HealthBarController" type="Control" parent="GUI/TopUIBar"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_lakw3")
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="GUI/TopUIBar/HealthBarController"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 30.0
+offset_right = 243.0
+offset_bottom = 46.0
+scale = Vector2(3.5, 3.5)
+value = 100.0
+texture_over = ExtResource("22_kpybi")
+texture_progress = ExtResource("23_ctatt")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="GUI/TopUIBar/HealthBarController"]
+layout_mode = 0
+offset_left = 1015.0
+offset_top = 30.0
+offset_right = 1143.0
+offset_bottom = 46.0
+scale = Vector2(3.5, 3.5)
+value = 100.0
+texture_over = ExtResource("22_kpybi")
+texture_progress = ExtResource("24_ctatt")
+texture_progress_offset = Vector2(4, 4)
 
 [node name="SideBar" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -800.0
-offset_top = -150.0
-offset_right = -800.0
-offset_bottom = -150.0
+offset_left = -750.0
+offset_top = -200.0
+offset_right = -750.0
+offset_bottom = -200.0
 
 [node name="TextureRect" type="TextureRect" parent="GUI/SideBar"]
 layout_mode = 1
 offset_right = 294.0
 offset_bottom = 80.0
 rotation = 1.5707964
-scale = Vector2(2, 2)
+scale = Vector2(2.25, 2.25)
 texture = ExtResource("20_7iits")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/SideBar"]
+[node name="UnitButtonController" type="VBoxContainer" parent="GUI/SideBar"]
 layout_mode = 0
-offset_left = -142.0
-offset_top = 26.0
-offset_right = -17.0
-offset_bottom = 565.0
+offset_left = -184.0
+offset_top = 28.999996
+offset_right = -34.0
+offset_bottom = 512.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("3_2lf6f")
 
-[node name="SorceressButton" parent="GUI/SideBar/VBoxContainer" instance=ExtResource("3_37qwj")]
+[node name="SpellcasterButtons" type="HBoxContainer" parent="GUI/SideBar/UnitButtonController"]
 layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
 
-[node name="HealthBarController" type="Control" parent="GUI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_lakw3")
+[node name="SorceressButton" parent="GUI/SideBar/UnitButtonController/SpellcasterButtons" instance=ExtResource("3_37qwj")]
+layout_mode = 2
+texture_normal = ExtResource("5_xgqkh")
 
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="GUI/HealthBarController"]
-layout_mode = 0
-offset_left = -686.0
-offset_top = 475.0
-offset_right = -558.0
-offset_bottom = 491.0
-scale = Vector2(3, 3)
-value = 100.0
-texture_over = ExtResource("22_kpybi")
-texture_progress = ExtResource("23_ctatt")
-texture_progress_offset = Vector2(4, 4)
+[node name="DarkMagicianButton" parent="GUI/SideBar/UnitButtonController/SpellcasterButtons" instance=ExtResource("5_oo54l")]
+layout_mode = 2
+texture_normal = ExtResource("7_munwf")
+script = ExtResource("6_kpybi")
 
-[node name="EnemyHealthBar" type="TextureProgressBar" parent="GUI/HealthBarController"]
-layout_mode = 0
-offset_left = 312.0
-offset_top = 471.0
-offset_right = 440.0
-offset_bottom = 487.0
-scale = Vector2(3, 3)
-value = 100.0
-texture_over = ExtResource("22_kpybi")
-texture_progress = ExtResource("24_ctatt")
-texture_progress_offset = Vector2(4, 4)
+[node name="FireMageButton" parent="GUI/SideBar/UnitButtonController/SpellcasterButtons" instance=ExtResource("5_oo54l")]
+layout_mode = 2
+texture_normal = ExtResource("9_ts3gi")
+script = ExtResource("10_munwf")
 
 [node name="TowerButtons" type="Control" parent="GUI"]
 layout_mode = 3
@@ -150,67 +254,80 @@ offset_bottom = 90.0
 texture_normal = ExtResource("26_munwf")
 texture_hover = ExtResource("26_munwf")
 
+[node name="TitleScreen" parent="GUI" instance=ExtResource("23_fh13f")]
+unique_name_in_owner = true
+
+[node name="EndScreen" parent="GUI" node_paths=PackedStringArray("title_screen") instance=ExtResource("24_rup4s")]
+unique_name_in_owner = true
+title_screen = NodePath("../TitleScreen")
+
+[node name="GameState" parent="." instance=ExtResource("30_navra")]
+
+[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_spawner") instance=ExtResource("26_ts3gi")]
+enemy_controller = NodePath("../EnemyController")
+unit_spawner = NodePath("../UnitSpawner")
+
+[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
+unit_spawner = NodePath("../UnitSpawner")
+
+[node name="UnitSpawner" parent="." node_paths=PackedStringArray("button_controller", "tower_buttons", "gold_controller") instance=ExtResource("28_0nbtd")]
+button_controller = NodePath("../GUI/SideBar/UnitButtonController")
+tower_buttons = NodePath("../GUI/TowerButtons")
+gold_controller = NodePath("../GoldController")
+
 [node name="ElvenLevel" type="Node2D" parent="."]
 
 [node name="ElvenBattleground" type="Sprite2D" parent="ElvenLevel"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_7iits")
 
-[node name="TowerController" type="Node2D" parent="ElvenLevel"]
+[node name="TowerController" type="Node2D" parent="."]
 script = ExtResource("10_7t5mc")
 
-[node name="PlayerTowerTop" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(-500, -85)
+[node name="PlayerTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
+position = Vector2(-500, -120)
 
-[node name="PlayerTowerMid" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(-600, 65)
+[node name="PlayerTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
+position = Vector2(-600, 30)
 current_lane = 1
 
-[node name="PlayerTowerBot" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(-500, 215)
+[node name="PlayerTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
+position = Vector2(-500, 175)
 current_lane = 2
 
-[node name="EnemyTowerTop" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(500, -85)
+[node name="EnemyTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
+position = Vector2(450, -120)
 faction = 1
 
-[node name="EnemyTowerMid" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(600, 65)
+[node name="EnemyTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
+position = Vector2(600, 30)
 faction = 1
 current_lane = 1
 
-[node name="EnemyTowerBot" parent="ElvenLevel/TowerController" instance=ExtResource("10_dss4m")]
-position = Vector2(500, 215)
+[node name="EnemyTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
+position = Vector2(450, 175)
 faction = 1
 current_lane = 2
 
 [node name="Lanes" type="Node2D" parent="."]
 
-[node name="MiddleLane" type="StaticBody2D" parent="Lanes"]
-position = Vector2(0, 150)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/MiddleLane"]
-shape = SubResource("RectangleShape2D_2lf6f")
-
 [node name="TopLane" type="StaticBody2D" parent="Lanes"]
+position = Vector2(0, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/TopLane"]
 shape = SubResource("RectangleShape2D_7iits")
 
+[node name="MiddleLane" type="StaticBody2D" parent="Lanes"]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/MiddleLane"]
+shape = SubResource("RectangleShape2D_2lf6f")
+
 [node name="BottomLane" type="StaticBody2D" parent="Lanes"]
-position = Vector2(0, 300)
+position = Vector2(0, 350)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/BottomLane"]
 shape = SubResource("RectangleShape2D_oo54l")
-
-[node name="GoldController" parent="." instance=ExtResource("26_ts3gi")]
-
-[node name="UnitSpawner" parent="." instance=ExtResource("28_0nbtd")]
-
-[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
-unit_spawner = NodePath("../UnitSpawner")
-
-[node name="GameState" parent="." instance=ExtResource("30_navra")]
 
 [node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_q5onr")
