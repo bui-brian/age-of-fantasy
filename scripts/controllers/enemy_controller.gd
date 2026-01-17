@@ -4,9 +4,7 @@ class_name EnemyController extends Node
 @onready var timer: Timer = $Timer
 
 @export var unit_spawner: UnitSpawner
-@export var tower_top: Tower
-@export var tower_mid: Tower
-@export var tower_bot: Tower
+@export var tower_controller: TowerController
 
 signal enemy_gold_spent(gold_spent)
 
@@ -18,9 +16,9 @@ var mid_under_attack: bool = false
 var bot_under_attack: bool = false
 
 func _ready() -> void:
-	tower_top.lane_priority.connect(_set_top_under_attack)
-	tower_mid.lane_priority.connect(_set_mid_under_attack)
-	tower_bot.lane_priority.connect(_set_bot_under_attack)
+	tower_controller.enemy_top_under_attack.connect(_set_top_under_attack)
+	tower_controller.enemy_mid_under_attack.connect(_set_mid_under_attack)
+	tower_controller.enemy_bot_under_attack.connect(_set_bot_under_attack)
 	
 	timer.wait_time = enemy_tick_rate
 	timer.timeout.connect(enemy_ai_tick)
@@ -45,7 +43,7 @@ func enemy_ai_tick():
 	# If player_count <= 0, send a unit to attack
 	# If tower is being attacked, send unit to defend
 	# Defend Tower -> Match units -> If none in lane, send units
-	
+
 	if top_under_attack and GameState.enemy_gold >= 50:
 		unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Util.Lane.TOP)
 		GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)

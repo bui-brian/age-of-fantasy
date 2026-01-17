@@ -12,3 +12,4 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	
 	area.receive_hit(attacker_stats.base_damage)
+	area.tower_hit(attacker_stats.base_damage)

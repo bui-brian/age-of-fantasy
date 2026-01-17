@@ -267,11 +267,9 @@ title_screen = NodePath("../TitleScreen")
 enemy_controller = NodePath("../EnemyController")
 unit_spawner = NodePath("../UnitSpawner")
 
-[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner", "tower_top", "tower_mid", "tower_bot") instance=ExtResource("29_37qwj")]
+[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner", "tower_controller") instance=ExtResource("29_37qwj")]
 unit_spawner = NodePath("../UnitSpawner")
-tower_top = NodePath("../TowerController/EnemyTowerTop")
-tower_mid = NodePath("../TowerController/EnemyTowerMid")
-tower_bot = NodePath("../TowerController/EnemyTowerBot")
+tower_controller = NodePath("../TowerController")
 
 [node name="UnitSpawner" parent="." node_paths=PackedStringArray("button_controller", "tower_buttons", "gold_controller") instance=ExtResource("28_0nbtd")]
 button_controller = NodePath("../GUI/SideBar/UnitButtonController")

@@ -8,6 +8,7 @@ func _ready() -> void:
 	
 	if title_screen.play_button.pressed:
 		title_screen.hide()
+		
 	title_screen.show()
 	end_screen.hide()
 	
@@ -20,6 +21,6 @@ func _on_global_health_depleted() -> void:
 	if GameState.player_current_health <= 0:
 		end_screen.label.text = "You lose!"
 		end_screen.show() 
-	if GameState.enemy_current_health <= 0:
+	if GameState.enemy_total_health <= 0:
 		end_screen.label.text = "You win!"
 		end_screen.show()

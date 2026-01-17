@@ -7,6 +7,12 @@ extends Control
 func _ready() -> void:
 	GameState.global_player_health_changed.connect(_on_global_player_health_changed)
 	GameState.global_enemy_health_changed.connect(_on_global_enemy_health_changed)
+	
+	player_health_bar.max_value = 1000
+	enemy_health_bar.max_value = 1000
+	
+	_on_global_player_health_changed(GameState.player_current_health)
+	_on_global_enemy_health_changed(GameState.enemy_total_health)
 
 func _on_global_player_health_changed(PLAYER_HEALTH):
 	player_health_bar.value = PLAYER_HEALTH
