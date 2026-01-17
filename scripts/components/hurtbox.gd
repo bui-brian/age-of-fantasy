@@ -14,5 +14,9 @@ func tower_hit(damage: int) -> void:
 	if owner is not Tower:
 		return
 	
-	GameState.set_enemy_health(GameState.enemy_total_health-damage)
+	if owner.faction == Util.Faction.PLAYER:
+		GameState.set_player_health(GameState.player_total_health - damage)
+	elif owner.faction == Util.Faction.ENEMY:
+		GameState.set_enemy_health(GameState.enemy_total_health - damage)
+	
 	tower_attacked.emit()

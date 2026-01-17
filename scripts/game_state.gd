@@ -8,7 +8,7 @@ signal global_enemy_health_changed(enemy_health)
 
 signal global_health_depleted
 
-var player_current_health: int = 1000
+var player_total_health: int = 1000
 var enemy_total_health: int = 1000
 
 var player_gold: int = 0
@@ -34,13 +34,13 @@ func _ready() -> void:
 	call_deferred("set_enemy_count", 0, 0, 0)
 
 func set_player_health(PLAYER_HEALTH):
-	if player_current_health == PLAYER_HEALTH:
+	if player_total_health == PLAYER_HEALTH:
 		return
 	
-	player_current_health = PLAYER_HEALTH
-	global_player_health_changed.emit(player_current_health)
+	player_total_health = PLAYER_HEALTH
+	global_player_health_changed.emit(player_total_health)
 	
-	if player_current_health <= 0:
+	if player_total_health <= 0:
 		global_health_depleted.emit()
 
 func set_enemy_health(ENEMY_HEALTH):

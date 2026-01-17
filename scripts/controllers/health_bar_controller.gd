@@ -11,7 +11,7 @@ func _ready() -> void:
 	player_health_bar.max_value = 1000
 	enemy_health_bar.max_value = 1000
 	
-	_on_global_player_health_changed(GameState.player_current_health)
+	_on_global_player_health_changed(GameState.player_total_health)
 	_on_global_enemy_health_changed(GameState.enemy_total_health)
 
 func _on_global_player_health_changed(PLAYER_HEALTH):

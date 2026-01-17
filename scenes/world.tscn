@@ -160,7 +160,7 @@ offset_bottom = 46.0
 scale = Vector2(3.5, 3.5)
 value = 100.0
 texture_over = ExtResource("22_kpybi")
-texture_progress = ExtResource("23_ctatt")
+texture_progress = ExtResource("24_ctatt")
 texture_progress_offset = Vector2(4, 4)
 
 [node name="EnemyHealthBar" type="TextureProgressBar" parent="GUI/TopUIBar/HealthBarController"]
@@ -172,7 +172,7 @@ offset_bottom = 46.0
 scale = Vector2(3.5, 3.5)
 value = 100.0
 texture_over = ExtResource("22_kpybi")
-texture_progress = ExtResource("24_ctatt")
+texture_progress = ExtResource("23_ctatt")
 texture_progress_offset = Vector2(4, 4)
 
 [node name="SideBar" type="Control" parent="GUI"]
