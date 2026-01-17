@@ -7,7 +7,7 @@ signal health_changed(cur_health: int)
 
 @export var current_max_health: int = 100
 
-var current_health: int = 0: set = _on_health_set
+var current_health: int = 100: set = _on_health_set
 
 func _ready() -> void:
 	health_depleted.connect(_on_health_depleted)
@@ -19,6 +19,9 @@ func setup_stats() -> void:
 	current_health = current_max_health
 
 func _on_health_set(new_value: int) -> void:
+	if current_health == new_value:
+		return
+	
 	current_health = clampi(new_value, 0, current_max_health)
 	health_changed.emit(current_health)
 	

@@ -267,8 +267,11 @@ title_screen = NodePath("../TitleScreen")
 enemy_controller = NodePath("../EnemyController")
 unit_spawner = NodePath("../UnitSpawner")
 
-[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("29_37qwj")]
+[node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner", "tower_top", "tower_mid", "tower_bot") instance=ExtResource("29_37qwj")]
 unit_spawner = NodePath("../UnitSpawner")
+tower_top = NodePath("../TowerController/EnemyTowerTop")
+tower_mid = NodePath("../TowerController/EnemyTowerMid")
+tower_bot = NodePath("../TowerController/EnemyTowerBot")
 
 [node name="UnitSpawner" parent="." node_paths=PackedStringArray("button_controller", "tower_buttons", "gold_controller") instance=ExtResource("28_0nbtd")]
 button_controller = NodePath("../GUI/SideBar/UnitButtonController")
@@ -289,11 +292,9 @@ position = Vector2(-500, -120)
 
 [node name="PlayerTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-600, 30)
-current_lane = 1
 
 [node name="PlayerTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(-500, 175)
-current_lane = 2
 
 [node name="EnemyTowerTop" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(450, -120)
@@ -302,12 +303,10 @@ faction = 1
 [node name="EnemyTowerMid" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(600, 30)
 faction = 1
-current_lane = 1
 
 [node name="EnemyTowerBot" parent="TowerController" instance=ExtResource("10_dss4m")]
 position = Vector2(450, 175)
 faction = 1
-current_lane = 2
 
 [node name="Lanes" type="Node2D" parent="."]
 

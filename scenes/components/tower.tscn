@@ -72,3 +72,5 @@ offset_right = 14.0
 offset_bottom = -100.0
 scale = Vector2(1.5, 1.5)
 health = NodePath("../Health")
+
+[node name="Timer" type="Timer" parent="."]
