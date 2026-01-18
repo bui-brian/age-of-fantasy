@@ -25,13 +25,9 @@ var enemy_unit_count_bot: int = 0
 func _ready() -> void:
 	set_player_health(1000)
 	set_enemy_health(1000)
+	call_deferred("set_gold", 0, 0)
 	#await get_tree().process_frame
 	#set_gold(0,0)
-	#set_player_count(0,0,0)
-	#set_enemy_count(0,0,0)
-	call_deferred("set_gold", 0, 0)
-	call_deferred("set_player_count", 0, 0, 0)
-	call_deferred("set_enemy_count", 0, 0, 0)
 
 func set_player_health(PLAYER_HEALTH):
 	if player_total_health == PLAYER_HEALTH:

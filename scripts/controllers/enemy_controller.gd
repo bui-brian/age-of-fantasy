@@ -32,13 +32,10 @@ func _set_bot_under_attack(under_attack: bool) -> void:
 	bot_under_attack = under_attack
 
 func enemy_ai_tick():
-	# 1. Check lane individually to decide on sending a unit
-	# Spend all gold until even number of units
-	# If player_count <= 0, send a unit to attack
-	# If tower is being attacked, send unit to defend
-	# Defend Tower -> Match units -> If none in lane, send units
+	# Check lane individually to decide on sending a unit
+		# Defend Tower -> Match units -> If none in lane, send units
 
-	# Defend each Tower if under attack
+	# If tower is being attacked, send unit to defend
 	if top_under_attack:
 		unit_spawner.spawn_final_unit("sorc_scene", Util.Faction.ENEMY, Util.Lane.TOP, 50)
 	
@@ -58,20 +55,17 @@ func enemy_ai_tick():
 	if GameState.player_unit_count_bot > GameState.enemy_unit_count_bot:
 		unit_spawner.spawn_final_unit("dm_scene", Util.Faction.ENEMY, Util.Lane.BOT, 50)
 	
-	#if GameState.player_unit_count_top == 0 and GameState.enemy_gold >= 50:
-		#unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Util.Lane.TOP)
-		#GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
-		#enemy_gold_spent.emit(50)
-	#
-	#if GameState.player_unit_count_mid == 0 and GameState.enemy_gold >= 50:
-		#unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50), Util.Lane.MID)
-		#GameState.set_enemy_count(GameState.enemy_unit_count_top, GameState.enemy_unit_count_mid+1, GameState.enemy_unit_count_bot)
-		#enemy_gold_spent.emit(50)
-	#
-	#if GameState.player_unit_count_bot == 0 and GameState.enemy_gold >= 50:
-		#unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250), Util.Lane.BOT)
-		#GameState.set_enemy_count(GameState.enemy_unit_count_top, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot-1)
-		#enemy_gold_spent.emit(50)
+	# If there are no player units in lane, send 1 unit to attack
+	if GameState.player_unit_count_top == 0:
+		unit_spawner.spawn_final_unit("knight_scene", Util.Faction.ENEMY, Util.Lane.TOP, 50)
+	
+	if GameState.player_unit_count_mid == 0:
+		unit_spawner.spawn_final_unit("knight_scene", Util.Faction.ENEMY, Util.Lane.MID, 50)
+	
+	if GameState.player_unit_count_bot == 0:
+		unit_spawner.spawn_final_unit("knight_scene", Util.Faction.ENEMY, Util.Lane.BOT, 50)
+
+	# Priority function below - decide to keep or not
 
 	# First, check player unit count across each lane to determine which lane to prioritize
 	#if GameState.player_unit_count_top > GameState.player_unit_count_mid and GameState.player_unit_count_top > GameState.player_unit_count_bot:

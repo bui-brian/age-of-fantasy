@@ -14,7 +14,7 @@ func _ready() -> void:
 	title_screen.show()
 	end_screen.hide()
 	
-	Engine.time_scale = 3.0
+	Engine.time_scale = 1.0
 
 func _on_global_health_depleted() -> void:
 	if game_over:
