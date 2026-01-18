@@ -30,8 +30,16 @@ func _ready() -> void:
 	
 	tower_buttons.toggled.connect(_set_toggled)
 
-func spawn_unit(unit_scene: Variant, unit_group: Util.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Util.Lane):
+func new_unit(unit_scene: Variant, unit_group: Util.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Util.Lane):
 	var temp_scene = unit_scene
+	
+	match unit_lane:
+		Util.Lane.TOP:
+			temp_scene.z_index = 1
+		Util.Lane.MID:
+			temp_scene.z_index = 2
+		Util.Lane.BOT:
+			temp_scene.z_index = 3
 	
 	temp_scene.faction = unit_group
 	temp_scene.direction = unit_direction.x
@@ -42,45 +50,42 @@ func spawn_unit(unit_scene: Variant, unit_group: Util.Faction, unit_direction: V
 	
 	return temp_scene
 
-func spawn_unit_lane(unit) -> void:
-	get_tree().current_scene.add_child(unit)
-
-func full_spawn(unit_str: String, unit_group: Util.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Util.Lane):
+func spawn_unit(unit_str: String, unit_group: Util.Faction, unit_direction: Vector2, unit_position: Vector2, unit_lane: Util.Lane):
 		var unit_scene = UNIT_SCENES[unit_str].instantiate()
-		var unit_instance = spawn_unit(unit_scene, unit_group, unit_direction, unit_position, unit_lane)
-		spawn_unit_lane(unit_instance)
+		var unit_instance = new_unit(unit_scene, unit_group, unit_direction, unit_position, unit_lane)
+		get_tree().current_scene.add_child(unit_instance)
 
-func spawn_final_unit(UNIT_STR: String, FACTION: Util.Faction, LANE: Util.Lane, GOLD_COST: int) -> void:
+func spawn_unit_lane(UNIT_STR: String, FACTION: Util.Faction, LANE: Util.Lane, GOLD_COST: int) -> void:
 	match LANE:
 		Util.Lane.TOP:
 			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
-				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, -100), LANE)
+				spawn_unit(UNIT_STR, FACTION, Vector2.LEFT, Vector2(600, -25), LANE)
 				GameState.set_enemy_count_top(GameState.enemy_unit_count_top + 1)
 				enemy_gold_spent.emit(GOLD_COST)
 				
 			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
-				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, -200), LANE)
+				spawn_unit(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-600, -25), LANE)
 				GameState.set_player_count_top(GameState.player_unit_count_top + 1)
 				player_gold_spent.emit(GOLD_COST)
 				
 		Util.Lane.MID:
 			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
-				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, 50), LANE)
+				spawn_unit(UNIT_STR, FACTION, Vector2.LEFT, Vector2(700, 125), LANE)
 				GameState.set_enemy_count_mid(GameState.enemy_unit_count_mid + 1)
 				enemy_gold_spent.emit(GOLD_COST)
 			
 			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
-				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, 50), LANE)
+				spawn_unit(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-700, 125), LANE)
 				GameState.set_player_count_mid(GameState.player_unit_count_mid + 1)
 				player_gold_spent.emit(GOLD_COST)
 				
 		Util.Lane.BOT:
 			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
-				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, 250), LANE)
+				spawn_unit(UNIT_STR, FACTION, Vector2.LEFT, Vector2(800, 300), LANE)
 				GameState.set_enemy_count_bot(GameState.enemy_unit_count_bot + 1)
 				enemy_gold_spent.emit(GOLD_COST)
 			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
-				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, 250), LANE)
+				spawn_unit(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-800, 300), LANE)
 				GameState.set_player_count_bot(GameState.player_unit_count_bot + 1)
 				player_gold_spent.emit(GOLD_COST)
 
@@ -98,10 +103,10 @@ func _on_unit_button_pressed(gold_cost, unit_scene, BUTTON_AVAILABLE) -> void:
 		return
 	
 	if top_toggle:
-		spawn_final_unit(scene_str, Util.Faction.PLAYER, Util.Lane.TOP, gold_cost)
+		spawn_unit_lane(scene_str, Util.Faction.PLAYER, Util.Lane.TOP, gold_cost)
 	
 	if mid_toggle:
-		spawn_final_unit(scene_str, Util.Faction.PLAYER, Util.Lane.MID, gold_cost)
+		spawn_unit_lane(scene_str, Util.Faction.PLAYER, Util.Lane.MID, gold_cost)
 	
 	if bot_toggle:
-		spawn_final_unit(scene_str, Util.Faction.PLAYER, Util.Lane.BOT, gold_cost)
+		spawn_unit_lane(scene_str, Util.Faction.PLAYER, Util.Lane.BOT, gold_cost)
