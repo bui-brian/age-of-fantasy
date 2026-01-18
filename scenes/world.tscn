@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bb73en382ou55" path="res://scenes/ui/gold_ui.tscn" id="10_lakw3"]
 [ext_resource type="Script" uid="uid://bspj78aqby3mv" path="res://scripts/gui/buttons/fire_mage_button.gd" id="10_munwf"]
 [ext_resource type="Script" uid="uid://cd6gawiwe3tew" path="res://scripts/controllers/gold_ui_controller.gd" id="10_pm21f"]
-[ext_resource type="AudioStream" uid="uid://gca5mbq56l2y" path="res://assets/music/new-gameplay-music.mp3" id="12_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bfvsjiqi07ask" path="res://assets/level/Elven_Land_Game_Battle_Backgrounds/PNG/game_background_4/game_background_4.png" id="17_7iits"]
 [ext_resource type="Texture2D" uid="uid://dasihfr7a38ne" path="res://assets/ui/Edinnu_UI_asset_pack/Dialogue_plates/Plate (27).png" id="20_7iits"]
 [ext_resource type="Texture2D" uid="uid://c4uqjskc2rhi2" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBar_128x16.png" id="22_kpybi"]
@@ -32,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://b8hmy5ppx7uet" path="res://scenes/components/unit_spawner.tscn" id="28_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://cppmo7nbo2qoi" path="res://scenes/controllers/enemy_controller.tscn" id="29_37qwj"]
 [ext_resource type="PackedScene" uid="uid://3yxfrprhmkm7" path="res://scenes/game_state.tscn" id="30_navra"]
+[ext_resource type="AudioStream" uid="uid://dkshejqvirxy2" path="res://assets/music/aof-sound-track.mp3" id="32_fh13f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iits"]
 size = Vector2(2000, 20)
@@ -263,8 +263,7 @@ title_screen = NodePath("../TitleScreen")
 
 [node name="GameState" parent="." instance=ExtResource("30_navra")]
 
-[node name="GoldController" parent="." node_paths=PackedStringArray("enemy_controller", "unit_spawner") instance=ExtResource("26_ts3gi")]
-enemy_controller = NodePath("../EnemyController")
+[node name="GoldController" parent="." node_paths=PackedStringArray("unit_spawner") instance=ExtResource("26_ts3gi")]
 unit_spawner = NodePath("../UnitSpawner")
 
 [node name="EnemyController" parent="." node_paths=PackedStringArray("unit_spawner", "tower_controller") instance=ExtResource("29_37qwj")]
@@ -327,7 +326,7 @@ position = Vector2(0, 350)
 shape = SubResource("RectangleShape2D_oo54l")
 
 [node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_q5onr")
+stream = ExtResource("32_fh13f")
 autoplay = true
 bus = &"Music"
 
