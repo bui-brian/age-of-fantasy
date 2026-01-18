@@ -6,6 +6,12 @@ extends Node2D
 var game_over: bool = false
 
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(
+		preload("res://assets/ui/Edinnu_UI_asset_pack/Cursors/Cursor (7).png"),
+		Input.CURSOR_ARROW,
+		Vector2(0, 0) # hotspot
+	)
+	
 	GameState.global_health_depleted.connect(_on_global_health_depleted)
 	
 	if title_screen.play_button.pressed:
