@@ -6,8 +6,6 @@ class_name EnemyController extends Node
 @export var unit_spawner: UnitSpawner
 @export var tower_controller: TowerController
 
-signal enemy_gold_spent(gold_spent)
-
 var enemy_tick_rate: float = 5.0
 var prioritize_lane: int = 0 # top = 1, mid = 2, bot = 3
 
@@ -33,24 +31,6 @@ func _set_mid_under_attack(under_attack: bool) -> void:
 func _set_bot_under_attack(under_attack: bool) -> void:
 	bot_under_attack = under_attack
 
-func spawn_enemy_unit(UNIT_STR: String, LANE: Util.Lane, GOLD_COST: int) -> void:
-	match LANE:
-		Util.Lane.TOP:
-			if GameState.enemy_gold >= GOLD_COST:
-				unit_spawner.full_spawn(UNIT_STR, Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), LANE)
-				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
-				enemy_gold_spent.emit(GOLD_COST)
-		Util.Lane.MID:
-			if GameState.enemy_gold >= GOLD_COST:
-				unit_spawner.full_spawn(UNIT_STR, Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 50), LANE)
-				GameState.set_enemy_count(GameState.enemy_unit_count_top, GameState.enemy_unit_count_mid+1, GameState.enemy_unit_count_bot)
-				enemy_gold_spent.emit(GOLD_COST)
-		Util.Lane.BOT:
-			if GameState.enemy_gold >= GOLD_COST:
-				unit_spawner.full_spawn(UNIT_STR, Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, 250), LANE)
-				GameState.set_enemy_count(GameState.enemy_unit_count_top, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot-1)
-				enemy_gold_spent.emit(GOLD_COST)
-
 func enemy_ai_tick():
 	# 1. Check lane individually to decide on sending a unit
 	# Spend all gold until even number of units
@@ -59,13 +39,17 @@ func enemy_ai_tick():
 	# Defend Tower -> Match units -> If none in lane, send units
 
 	if top_under_attack:
-		spawn_enemy_unit("sorc_scene", Util.Lane.TOP, 50)
+		unit_spawner.spawn_final_unit("sorc_scene", Util.Faction.ENEMY, Util.Lane.TOP, 50)
 	
 	if mid_under_attack:
-		spawn_enemy_unit("sorc_scene", Util.Lane.MID, 50)
+		unit_spawner.spawn_final_unit("sorc_scene", Util.Faction.ENEMY, Util.Lane.MID, 50)
 	
 	if bot_under_attack:
-		spawn_enemy_unit("sorc_scene", Util.Lane.BOT, 50)
+		unit_spawner.spawn_final_unit("sorc_scene", Util.Faction.ENEMY, Util.Lane.BOT, 50)
+	
+	#if GameState.player_unit_count_top > GameState.enemy_unit_count_top:
+		#print("Current top lane count: ", GameState.player_unit_count_top)
+		#unit_spawner.spawn_enemy_unit("dm_scene", Util.Lane.TOP, 50)
 	
 	#if GameState.player_unit_count_top == 0 and GameState.enemy_gold >= 50:
 		#unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Util.Lane.TOP)

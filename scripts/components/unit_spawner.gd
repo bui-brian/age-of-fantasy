@@ -7,6 +7,7 @@ const UNIT_SCENES := {
 }
 
 signal player_gold_spent(gold_spent)
+signal enemy_gold_spent(gold_spent)
 
 @export var button_controller: UnitButtonController
 @export var tower_buttons: TowerButtons
@@ -49,6 +50,40 @@ func full_spawn(unit_str: String, unit_group: Util.Faction, unit_direction: Vect
 		var unit_instance = spawn_unit(unit_scene, unit_group, unit_direction, unit_position, unit_lane)
 		spawn_unit_lane(unit_instance)
 
+func spawn_final_unit(UNIT_STR: String, FACTION: Util.Faction, LANE: Util.Lane, GOLD_COST: int) -> void:
+	match LANE:
+		Util.Lane.TOP:
+			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
+				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, -100), LANE)
+				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
+				enemy_gold_spent.emit(GOLD_COST)
+				
+			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
+				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, -200), LANE)
+				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
+				player_gold_spent.emit(GOLD_COST)
+				
+		Util.Lane.MID:
+			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
+				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, 50), LANE)
+				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
+				enemy_gold_spent.emit(GOLD_COST)
+			
+			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
+				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, 50), LANE)
+				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
+				player_gold_spent.emit(GOLD_COST)
+				
+		Util.Lane.BOT:
+			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
+				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, 250), LANE)
+				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
+				enemy_gold_spent.emit(GOLD_COST)
+			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
+				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, 250), LANE)
+				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
+				player_gold_spent.emit(GOLD_COST)
+
 # --- Button handlers ---
 func _set_toggled(MID_TOGGLE: bool, TOP_TOGGLE: bool, BOT_TOGGLE: bool) -> void:
 	mid_toggle = MID_TOGGLE
@@ -62,17 +97,11 @@ func _on_unit_button_pressed(gold_cost, unit_scene, BUTTON_AVAILABLE) -> void:
 	if not BUTTON_AVAILABLE:
 		return
 	
-	if top_toggle and GameState.player_gold >= gold_cost:
-		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, -200), Util.Lane.TOP)
-		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
-		player_gold_spent.emit(50)
+	if top_toggle:
+		spawn_final_unit(scene_str, Util.Faction.PLAYER, Util.Lane.TOP, gold_cost)
 	
-	if mid_toggle and GameState.player_gold >= gold_cost:
-		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 50), Util.Lane.MID)
-		GameState.set_player_count(GameState.player_unit_count_mid+1, GameState.player_unit_count_top, GameState.player_unit_count_bot)
-		player_gold_spent.emit(50)
+	if mid_toggle:
+		spawn_final_unit(scene_str, Util.Faction.PLAYER, Util.Lane.MID, gold_cost)
 	
-	if bot_toggle and GameState.player_gold >= gold_cost:
-		full_spawn(scene_str, Util.Faction.PLAYER, Vector2.RIGHT, Vector2(-750, 250), Util.Lane.BOT)
-		GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, GameState.player_unit_count_bot+1)
-		player_gold_spent.emit(50)
+	if bot_toggle:
+		spawn_final_unit(scene_str, Util.Faction.PLAYER, Util.Lane.BOT, gold_cost)
