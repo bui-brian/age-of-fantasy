@@ -55,33 +55,33 @@ func spawn_final_unit(UNIT_STR: String, FACTION: Util.Faction, LANE: Util.Lane, 
 		Util.Lane.TOP:
 			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
 				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, -100), LANE)
-				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
+				GameState.set_enemy_count_top(GameState.enemy_unit_count_top + 1)
 				enemy_gold_spent.emit(GOLD_COST)
 				
 			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
 				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, -200), LANE)
-				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
+				GameState.set_player_count_top(GameState.player_unit_count_top + 1)
 				player_gold_spent.emit(GOLD_COST)
 				
 		Util.Lane.MID:
 			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
 				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, 50), LANE)
-				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
+				GameState.set_enemy_count_mid(GameState.enemy_unit_count_mid + 1)
 				enemy_gold_spent.emit(GOLD_COST)
 			
 			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
 				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, 50), LANE)
-				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
+				GameState.set_player_count_mid(GameState.player_unit_count_mid + 1)
 				player_gold_spent.emit(GOLD_COST)
 				
 		Util.Lane.BOT:
 			if FACTION == Util.Faction.ENEMY and GameState.enemy_gold >= GOLD_COST:
 				full_spawn(UNIT_STR, FACTION, Vector2.LEFT, Vector2(750, 250), LANE)
-				GameState.set_enemy_count(GameState.enemy_unit_count_top+1, GameState.enemy_unit_count_mid, GameState.enemy_unit_count_bot)
+				GameState.set_enemy_count_bot(GameState.enemy_unit_count_bot + 1)
 				enemy_gold_spent.emit(GOLD_COST)
 			if FACTION == Util.Faction.PLAYER and GameState.player_gold >= GOLD_COST:
 				full_spawn(UNIT_STR, FACTION, Vector2.RIGHT, Vector2(-750, 250), LANE)
-				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top+1, GameState.player_unit_count_bot)
+				GameState.set_player_count_bot(GameState.player_unit_count_bot + 1)
 				player_gold_spent.emit(GOLD_COST)
 
 # --- Button handlers ---

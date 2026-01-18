@@ -31,23 +31,35 @@ func _on_health_set(new_value: int) -> void:
 func _on_health_depleted() -> void:
 	if current_health > 0 or owner is Tower:
 		return
-		
+	
+	# Subtract 1 from Player/Enemy unit count for each unit death
 	match owner.current_lane:
 		Util.Lane.TOP:
-			if GameState.player_unit_count_top < 1:
-				GameState.set_player_count(GameState.player_unit_count_mid, 0, GameState.player_unit_count_bot)
-			else:
-				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top-1, GameState.player_unit_count_bot)
+			# Player TOP
+			if owner.faction == Util.Faction.PLAYER:
+				GameState.set_player_count_top(GameState.player_unit_count_top - 1)
+			
+			# Enemy TOP
+			if owner.faction == Util.Faction.ENEMY:
+				GameState.set_enemy_count_top(GameState.enemy_unit_count_top - 1)
+				
 		Util.Lane.MID:
-			if GameState.player_unit_count_mid < 1:
-				GameState.set_player_count(0, GameState.player_unit_count_top, GameState.player_unit_count_bot)
-			else:
-				GameState.set_player_count(GameState.player_unit_count_mid-1, GameState.player_unit_count_top, GameState.player_unit_count_bot)
+			# Player MID
+			if owner.faction == Util.Faction.PLAYER:
+				GameState.set_player_count_mid(GameState.player_unit_count_mid - 1)
+			
+			# Enemy MID
+			if owner.faction == Util.Faction.ENEMY:
+				GameState.set_enemy_count_mid(GameState.enemy_unit_count_mid - 1)
+			
 		Util.Lane.BOT:
-			if GameState.player_unit_count_bot < 1:
-				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, 0)
-			else:
-				GameState.set_player_count(GameState.player_unit_count_mid, GameState.player_unit_count_top, GameState.player_unit_count_bot-1)
+			# Player BOT
+			if owner.faction == Util.Faction.PLAYER:
+				GameState.set_player_count_bot(GameState.player_unit_count_bot - 1)
+			
+			# Enemy BOT
+			if owner.faction == Util.Faction.ENEMY:
+				GameState.set_enemy_count_bot(GameState.enemy_unit_count_bot - 1)
 	
 	# Stop unit's processes
 	owner.set_process(false)

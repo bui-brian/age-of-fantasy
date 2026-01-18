@@ -58,12 +58,44 @@ func set_gold(PLAYER_GOLD, ENEMY_GOLD):
 	enemy_gold = ENEMY_GOLD
 	global_gold_changed.emit(player_gold, enemy_gold)
 
-func set_player_count(PLAYER_UNIT_COUNT_MID, PLAYER_UNIT_COUNT_TOP, PLAYER_UNIT_COUNT_BOT):
+func set_player_count_top(PLAYER_UNIT_COUNT_TOP):
+	if PLAYER_UNIT_COUNT_TOP <= 0:
+		player_unit_count_top = 0
+		return
+	
 	player_unit_count_top = PLAYER_UNIT_COUNT_TOP
+
+func set_player_count_mid(PLAYER_UNIT_COUNT_MID):
+	if PLAYER_UNIT_COUNT_MID <= 0:
+		player_unit_count_mid = 0
+		return
+	
 	player_unit_count_mid = PLAYER_UNIT_COUNT_MID
+
+func set_player_count_bot(PLAYER_UNIT_COUNT_BOT):
+	if PLAYER_UNIT_COUNT_BOT <= 0:
+		player_unit_count_bot = 0
+		return
+	
 	player_unit_count_bot = PLAYER_UNIT_COUNT_BOT
 
-func set_enemy_count(ENEMY_UNIT_COUNT_TOP, ENEMY_UNIT_COUNT_MID, ENEMY_UNIT_COUNT_BOT):
+func set_enemy_count_top(ENEMY_UNIT_COUNT_TOP):
+	if ENEMY_UNIT_COUNT_TOP <= 0:
+		enemy_unit_count_top = 0
+		return
+	
 	enemy_unit_count_top = ENEMY_UNIT_COUNT_TOP
+
+func set_enemy_count_mid(ENEMY_UNIT_COUNT_MID):
+	if ENEMY_UNIT_COUNT_MID <= 0:
+		enemy_unit_count_mid = 0
+		return
+	
 	enemy_unit_count_mid = ENEMY_UNIT_COUNT_MID
+
+func set_enemy_count_bot(ENEMY_UNIT_COUNT_BOT):
+	if ENEMY_UNIT_COUNT_BOT <= 0:
+		enemy_unit_count_bot = 0
+		return
+	
 	enemy_unit_count_bot = ENEMY_UNIT_COUNT_BOT

@@ -38,6 +38,7 @@ func enemy_ai_tick():
 	# If tower is being attacked, send unit to defend
 	# Defend Tower -> Match units -> If none in lane, send units
 
+	# Defend each Tower if under attack
 	if top_under_attack:
 		unit_spawner.spawn_final_unit("sorc_scene", Util.Faction.ENEMY, Util.Lane.TOP, 50)
 	
@@ -47,9 +48,15 @@ func enemy_ai_tick():
 	if bot_under_attack:
 		unit_spawner.spawn_final_unit("sorc_scene", Util.Faction.ENEMY, Util.Lane.BOT, 50)
 	
-	#if GameState.player_unit_count_top > GameState.enemy_unit_count_top:
-		#print("Current top lane count: ", GameState.player_unit_count_top)
-		#unit_spawner.spawn_enemy_unit("dm_scene", Util.Lane.TOP, 50)
+	# Match amount of player units in each lane
+	if GameState.player_unit_count_top > GameState.enemy_unit_count_top:
+		unit_spawner.spawn_final_unit("dm_scene", Util.Faction.ENEMY, Util.Lane.TOP, 50)
+	
+	if GameState.player_unit_count_mid > GameState.enemy_unit_count_mid:
+		unit_spawner.spawn_final_unit("dm_scene", Util.Faction.ENEMY, Util.Lane.MID, 50)
+	
+	if GameState.player_unit_count_bot > GameState.enemy_unit_count_bot:
+		unit_spawner.spawn_final_unit("dm_scene", Util.Faction.ENEMY, Util.Lane.BOT, 50)
 	
 	#if GameState.player_unit_count_top == 0 and GameState.enemy_gold >= 50:
 		#unit_spawner.full_spawn("sorc_scene", Util.Faction.ENEMY, Vector2.LEFT, Vector2(750, -100), Util.Lane.TOP)
