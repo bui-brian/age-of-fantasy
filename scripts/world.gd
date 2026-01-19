@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var title_screen: Control = %TitleScreen
 @onready var end_screen: Control = %EndScreen
+@onready var tower_buttons: TowerButtons = $GUI/TowerButtons
 
 var game_over: bool = false
 
@@ -21,6 +22,10 @@ func _ready() -> void:
 	end_screen.hide()
 	
 	Engine.time_scale = 1.0
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		tower_buttons.reset_tower_toggles()
 
 func _on_global_health_depleted() -> void:
 	if game_over:
