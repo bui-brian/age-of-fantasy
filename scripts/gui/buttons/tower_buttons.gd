@@ -48,6 +48,17 @@ func start_tween(object: Object, property: String, final_val: Variant, duration:
 	var tween = create_tween()
 	tween.tween_property(object, property, final_val, duration)
 
+func reset_tower_toggles() -> void:
+	top_toggle = false
+	mid_toggle = false
+	bot_toggle = false
+	
+	toggled.emit(top_toggle, mid_toggle, bot_toggle)
+	
+	player_tower_top_button.modulate.a = 0.0
+	player_tower_mid_button.modulate.a = 0.0
+	player_tower_bot_button.modulate.a = 0.0
+
 # --- on Tower hover entered ---
 func _on_top_hover_entered():
 	if top_toggle:

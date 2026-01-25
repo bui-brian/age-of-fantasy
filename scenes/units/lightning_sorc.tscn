@@ -475,7 +475,7 @@ shape = SubResource("RectangleShape2D_8ek24")
 
 [node name="AttackRaycast" type="RayCast2D" parent="."]
 position = Vector2(-5, 15)
-target_position = Vector2(50, 0)
+target_position = Vector2(75, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -492,8 +492,8 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_cac0x")
 
 [node name="Hitbox" parent="." instance=ExtResource("8_hbmdm")]
-position = Vector2(70, 15)
-scale = Vector2(6, 1.5)
+position = Vector2(75, 15)
+scale = Vector2(7, 1.5)
 monitoring = false
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
