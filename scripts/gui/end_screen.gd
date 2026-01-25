@@ -17,7 +17,19 @@ func _on_main_menu_button_pressed() -> void:
 	self.hide()
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	#get_tree().change_scene_to_file("res://scenes/world.tscn")
+	GameState.set_player_health(1000)
+	GameState.set_enemy_health(1000)
+	
+	GameState.set_player_count_top(0)
+	GameState.set_player_count_mid(0)
+	GameState.set_player_count_bot(0)
+	
+	GameState.set_enemy_count_top(0)
+	GameState.set_enemy_count_mid(0)
+	GameState.set_enemy_count_bot(0)
+	
+	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
